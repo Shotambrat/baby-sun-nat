@@ -1,118 +1,124 @@
-import React, { useState } from 'react';
-import { cn } from '@lib/utils';
-import InputMask from 'react-input-mask';
-import { motion } from 'framer-motion';
-
-// Custom hook for form validation
-const useFormValidation = () => {
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  
-  const validate = (name: string, value: string) => {
-    let error = '';
-    if (!value.trim()) {
-      error = 'This field is required';
-    } else if (name === 'phone' && !/^\+998\s\(\d{2}\)\s\d{3}-\d{2}-\d{2}$/.test(value)) {
-      error = 'Invalid phone number format';
-    }
-    setErrors({ ...errors, [name]: error });
-  };
-
-  return { errors, validate };
-};
+"use client"
+import { useState, ChangeEvent } from "react";
+import React from "react";
+import { cn } from "@lib/utils";
+import TextField from "@mui/material/TextField";
+import { Select, MenuItem, FormControl, InputLabel } from "@mui/material";
+import { Button } from "@/components/ui";
+import Image from "next/image";
 
 interface Props {
   className?: string;
 }
 
+interface FormState {
+  fullname: string;
+  number: string;
+  service: string;
+}
+
 export const Application = ({ className }: Props) => {
-  const { errors, validate } = useFormValidation();
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    service: '',
+  const [form, setForm] = useState<FormState>({
+    fullname: "",
+    number: "",
+    service: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    validate(name, value);
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Submit logic here
-    console.log(formData);
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | { name?: string; value: unknown }>, 
+    name: keyof FormState
+  ) => {
+    setForm((prevState) => ({
+      ...prevState,
+      [name]: e.target.value as string,
+    }));
   };
 
   return (
     <div className={cn("py-24", className)}>
-      <motion.div 
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        className='w-full max-w-[1500px] px-4 mx-auto rounded-3xl bg-[#009FE3] p-10 text-white'
-      >
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="md:w-1/2">
-            <h2 className="text-4xl font-bold mb-4">Записаться на прием</h2>
-            <p className="text-lg mb-6">Мы предлагаем комфортные условия и современный подход к лечению</p>
+      <div className="w-full max-w-[1500px] px-4 mx-auto  relative ">
+        <div className="w-full lgx:p-12 relative p-6 mdx:p-10 flex max-mdx:flex-col lgx:rounded-[40px] rounded-3xl bg-[#009FE3] text-white gap-6">
+          <div className="absolute -bottom-12 -left-2">
+            <Image
+            src={'/images/application/application-icon.png'}
+            width={1000}
+            height={1000}
+            alt="Application Icon on Background"
+            className="max-h-[200px] max-w-[200px] h-full w-full"
+            />
           </div>
-          <form onSubmit={handleSubmit} className="md:w-1/2 space-y-4">
-            <div>
-              <label htmlFor="name" className="block mb-2">ФИО</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className={`w-full px-4 py-2 rounded-lg focus:ring-4 focus:outline-none ${errors.name ? 'ring-red-500' : 'ring-blue-500'}`}
-                placeholder="Введите ФИО"
+          <div className="flex-1 space-y-4">
+            <h3 className="text-4xl font-semibold leading-12 w-full max-w-[300px]">
+              Записаться <br /> на прием
+            </h3>
+            <p className="w-full max-w-[300px] max-mdx:text-lg">
+              Мы предлагаем комфортные условия и современный подход к лечению
+            </p>
+          </div>
+          <div className="flex-1">
+            <div className="w-full space-y-8 lgx:max-w-[500px]">
+              <TextField
+                label="ФИО"
+                value={form.fullname}
+                onChange={(e) => handleChange(e, "fullname")}
+                variant="standard"
+                fullWidth
+                sx={{
+                  input: { color: "white" },
+                  "& .MuiInput-underline:before": { borderBottomColor: "white" }, // Белая нижняя линия
+                  "& .MuiInput-underline:hover:not(.Mui-disabled):before": { borderBottomColor: "white" }, // Белая линия при наведении
+                  "& .MuiInput-underline:after": { borderBottomColor: "gold" }, // Золотая линия при фокусе
+                }}
+                InputLabelProps={{
+                  style: { color: "white" }, // Цвет label
+                }}
               />
-              {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
-            </div>
-            
-            <div>
-              <label htmlFor="phone" className="block mb-2">Номер телефона</label>
-              <InputMask
-                mask="+998 (99) 999-99-99"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className={`w-full px-4 py-2 rounded-lg focus:ring-4 focus:outline-none ${errors.phone ? 'ring-red-500' : 'ring-blue-500'}`}
-                placeholder="+998 (__) ___-__-__"
+              <TextField
+                label="Номер телефона"
+                value={form.number}
+                onChange={(e) => handleChange(e, "number")}
+                variant="standard"
+                fullWidth
+                sx={{
+                  input: { color: "white" },
+                  "& .MuiInput-underline:before": { borderBottomColor: "white" }, // Белая нижняя линия
+                  "& .MuiInput-underline:hover:not(.Mui-disabled):before": { borderBottomColor: "white" }, // Белая линия при наведении
+                  "& .MuiInput-underline:after": { borderBottomColor: "gold" }, // Золотая линия при фокусе
+                }}
+                InputLabelProps={{
+                  style: { color: "white" }, // Цвет label
+                }}
               />
-              {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+              <FormControl fullWidth variant="standard" sx={{ mb: 3, color: "white" }}>
+                <InputLabel sx={{ color: "white" }}>Выберите услугу</InputLabel>
+                <Select
+                  value={form.service}
+                  onChange={(e) => handleChange(e, "service")}
+                  sx={{
+                    color: "white",
+                    "& .MuiSelect-icon": { color: "white" }, // Белая иконка стрелки
+                    "& .MuiInput-underline:before": { borderBottomColor: "white" }, // Белая нижняя линия
+                    "& .MuiInput-underline:hover:not(.Mui-disabled):before": { borderBottomColor: "white" }, // Белая линия при наведении
+                    "&:hover:not(.Mui-disabled):before": { borderBottomColor: "white" }, // Белая линия при наведении (без фокуса)
+                    "&:before": { borderBottomColor: "white" }, // Белая линия до фокуса
+                    "&:after": { borderBottomColor: "gold" }, // Золотая линия при фокусе
+                  }}
+                >
+                  <MenuItem value="">
+                    <em>Не выбрано</em>
+                  </MenuItem>
+                  <MenuItem value="consultation">Консультация</MenuItem>
+                  <MenuItem value="treatment">Лечение</MenuItem>
+                  <MenuItem value="diagnostics">Диагностика</MenuItem>
+                </Select>
+              </FormControl>
+              <Button className="bg-white text-[#009FE3] max-lgx:w-full text-xl font-semibold py-3 hover:bg-white px-16 rounded-full">
+                Отправить
+              </Button>
             </div>
-
-            <div>
-              <label htmlFor="service" className="block mb-2">Выберите услугу</label>
-              <select
-                id="service"
-                name="service"
-                value={formData.service}
-                onChange={handleChange}
-                className="w-full px-4 py-2 rounded-lg focus:ring-4 focus:outline-none"
-              >
-                <option value="">Выберите услугу</option>
-                <option value="consultation">Консультация</option>
-                <option value="diagnosis">Диагностика</option>
-                <option value="treatment">Лечение</option>
-              </select>
-              {errors.service && <p className="text-red-500 text-sm mt-1">{errors.service}</p>}
-            </div>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              type="submit"
-              className="w-full bg-white text-[#009FE3] font-bold py-3 rounded-lg hover:bg-gray-100"
-            >
-              Отправить
-            </motion.button>
-          </form>
+          </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };
