@@ -62,7 +62,7 @@ export const AboutBanner = ({ className }: Props) => {
       </div>
       <div className="lgx:hidden px-4 mt-8">
         <Image
-          src={'/images/about/banner/about.jfif'}
+          src={'/svg/about/banner/about.jfif'}
           width={1000}
           height={1000}
           alt="About Mobile photo"

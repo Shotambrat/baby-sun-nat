@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import markerIcon from '@/public/svg/map/Map pins.svg'; // Импортируем ваш SVG
 
 interface Props {
   className?: string;
