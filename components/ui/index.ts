@@ -12,3 +12,4 @@ export { Popover, PopoverContent, PopoverTrigger } from "./popover";
 export { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue } from "./select";
 export { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetOverlay, SheetPortal, SheetTitle, SheetTrigger } from "./sheet";
 export { Skeleton } from "./skeleton";
+export { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
