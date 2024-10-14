@@ -17,8 +17,7 @@ export const Mission = ({ className }: Props) => {
               Забота о детях
             </h3>
             <p className="leading-5 lgx:text-lg font-medium">
-              Мы стремимся улучшить качество жизни каждого ребенка, предоставляя
-              передовые методы лечения
+              Мы стремимся улучшить качество жизни каждого ребенка, предоставляя передовые методы лечения
             </p>
           </div>
           <Image
@@ -31,11 +30,10 @@ export const Mission = ({ className }: Props) => {
           />
           <div className="rounded-3xl order-3 lgx:order-4 p-8 space-y-4 border border-[#DFDFDF] h-[200px] mdx:h-[250px] lgx:h-[300px]">
             <h3 className="text-xl lgx:text-2xl font-semibold">
-              Безопасность и доверие
+              Безопасность и доверие
             </h3>
             <p className="leading-5 lgx:text-lg font-medium">
-              Мы создаем безопасные условия и поддерживаем доверительные
-              отношения с пациентами и их семьями
+              Мы создаем безопасные условия и поддерживаем доверительные отношения с пациентами и их семьями
             </p>
           </div>
           <Image

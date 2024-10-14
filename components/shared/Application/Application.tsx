@@ -1,9 +1,9 @@
-"use client"
+"use client";
 import { useState, ChangeEvent } from "react";
 import React from "react";
 import { cn } from "@lib/utils";
 import TextField from "@mui/material/TextField";
-import { Select, MenuItem, FormControl, InputLabel } from "@mui/material";
+import { Select, MenuItem, FormControl, InputLabel, SelectChangeEvent } from "@mui/material";
 import { Button } from "@/components/ui";
 import Image from "next/image";
 
@@ -24,27 +24,31 @@ export const Application = ({ className }: Props) => {
     service: "",
   });
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | { name?: string; value: unknown }>, 
-    name: keyof FormState
-  ) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, name: keyof FormState) => {
     setForm((prevState) => ({
       ...prevState,
-      [name]: e.target.value as string,
+      [name]: e.target.value,
+    }));
+  };
+
+  const handleSelectChange = (e: SelectChangeEvent<string>, name: keyof FormState) => {
+    setForm((prevState) => ({
+      ...prevState,
+      [name]: e.target.value,
     }));
   };
 
   return (
     <div className={cn("py-24", className)}>
-      <div className="w-full max-w-[1500px] px-4 mx-auto  relative ">
+      <div className="w-full max-w-[1500px] px-4 mx-auto relative">
         <div className="w-full lgx:p-12 relative p-6 mdx:p-10 flex max-mdx:flex-col lgx:rounded-[40px] rounded-3xl bg-[#009FE3] text-white gap-6">
           <div className="absolute -bottom-12 -left-2">
             <Image
-            src={'/images/application/application-icon.png'}
-            width={1000}
-            height={1000}
-            alt="Application Icon on Background"
-            className="max-h-[200px] max-w-[200px] h-full w-full"
+              src={"/images/application/application-icon.png"}
+              width={1000}
+              height={1000}
+              alt="Application Icon on Background"
+              className="max-h-[200px] max-w-[200px] h-full w-full"
             />
           </div>
           <div className="flex-1 space-y-4">
@@ -60,7 +64,7 @@ export const Application = ({ className }: Props) => {
               <TextField
                 label="ФИО"
                 value={form.fullname}
-                onChange={(e) => handleChange(e, "fullname")}
+                onChange={(e) => handleInputChange(e, "fullname")}
                 variant="standard"
                 fullWidth
                 sx={{
@@ -76,7 +80,7 @@ export const Application = ({ className }: Props) => {
               <TextField
                 label="Номер телефона"
                 value={form.number}
-                onChange={(e) => handleChange(e, "number")}
+                onChange={(e) => handleInputChange(e, "number")}
                 variant="standard"
                 fullWidth
                 sx={{
@@ -93,7 +97,7 @@ export const Application = ({ className }: Props) => {
                 <InputLabel sx={{ color: "white" }}>Выберите услугу</InputLabel>
                 <Select
                   value={form.service}
-                  onChange={(e) => handleChange(e, "service")}
+                  onChange={(e) => handleSelectChange(e, "service")}
                   sx={{
                     color: "white",
                     "& .MuiSelect-icon": { color: "white" }, // Белая иконка стрелки
