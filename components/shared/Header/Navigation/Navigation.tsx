@@ -14,8 +14,8 @@ export const Navigation = ({ className }: Props) => {
 
   // Access the navigation array directly from your translation file
   const navigationItems = [
-    { title: t('course'), href: '#course' },
-    { title: t('teachers'), href: '#teachers' },
+    { title: t('course'), href: '/services/hirurgiya' },
+    { title: t('teachers'), href: '/courses/shrot' },
     { title: t('reviews'), href: '/about' },
     { title: t('education'), href: '/reviews' },
     { title: t('gallery'), href: '/contacts' },
