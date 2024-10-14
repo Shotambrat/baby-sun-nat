@@ -3,8 +3,8 @@ import { Main } from "@/components/shared/Main";
 
 export default function Home() {
   return (
-    <div>
+    <main>
       <Main />
-    </div>
+    </main>
   );
 }

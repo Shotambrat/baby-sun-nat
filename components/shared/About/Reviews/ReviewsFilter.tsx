@@ -46,12 +46,13 @@ export const ReviewsFilter = ({ className }: ReviewsFilterProps) => {
   return (
     <div className={cn("py-24", className)}>
       <div className="w-full max-w-[1500px] px-4 mx-auto space-y-8">
-        <h2 className="text-5xl max-mdx:text-3xl font-bold w-full max-w-[500px]">Отзывы прошедших наше обучение</h2>
+        <h2 className="text-4xl max-mdx:text-3xl font-bold w-full max-w-[400px]">Отзывы прошедших наше обучение</h2>
         <div className="w-full space-y-4">
           <div className="w-full flex gap-2 overflow-x-scroll no-scrollbar">
             {categories.map((category, index) => (
               <Button
                 key={index}
+                className='rounded-full py-3 px-8 hover:text-white'
                 variant={activeCategory === category.slug ? 'default' : 'outline'}
                 onClick={() => setActiveCategory(category.slug)}
               >
@@ -59,7 +60,7 @@ export const ReviewsFilter = ({ className }: ReviewsFilterProps) => {
               </Button>
             ))}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 lgx:grid-cols-2 gap-2">
             {filteredReviews.slice(0, showAllReviews ? filteredReviews.length : 4).map((review, index) => (
               <ReviewItem
                 key={index}
@@ -67,12 +68,12 @@ export const ReviewsFilter = ({ className }: ReviewsFilterProps) => {
                 date={review.date}
                 avatar={review.avatar}
                 reviewText={review.reviewText}
-                className="bg-white shadow-md p-4"
+                className="shadow-md p-4"
               />
             ))}
           </div>
           <div className="w-full text-center">
-            <Button onClick={toggleShowAll} className="mt-4">
+            <Button onClick={toggleShowAll} className="mt-4 py-3 px-8 rounded-full">
               {showAllReviews ? 'Скрыть' : 'Смотреть все'}
             </Button>
           </div>

@@ -1,6 +1,6 @@
-import React from 'react';
-import { cn } from '@lib/utils';
-import { AboutDoctorsItem } from './AboutDoctorsItem';
+import React from "react";
+import { cn } from "@lib/utils";
+import { AboutDoctorsItem } from "../../About/Doctors/AboutDoctorsItem";
 
 interface Props {
   className?: string;
@@ -57,12 +57,14 @@ const doctors = [
   },
 ];
 
-export const AboutDoctors = ({ className }: Props) => {
+export const Specials = ({ className }: Props) => {
   return (
-    <div className={cn("py-24", className)}>
-      <div className='space-y-12 w-full max-w-[1500px] px-4 mx-auto'>
-        <h2 className='text-5xl max-mdx:text-4xl font-bold'>Наши врачи</h2>
-        <div className='grid grid-cols-1 mdx:grid-cols-2 lgx:grid-cols-4 gap-4'>
+    <section className={cn("py-24", className)}>
+      <div className="flex flex-col gap-8 w-full max-w-[1500px] px-4 mx-auto">
+        <h2 className="text-4xl font-semibold">
+          Специалисты, предостовляющие услуги
+        </h2>
+        <div className="grid grid-cols-1 mdx:grid-cols-2 lgx:grid-cols-4 gap-4">
           {doctors.map((doctor, index) => (
             <AboutDoctorsItem
               key={index}
@@ -74,6 +76,6 @@ export const AboutDoctors = ({ className }: Props) => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
