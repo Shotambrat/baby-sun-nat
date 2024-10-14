@@ -1,5 +1,6 @@
 import React from 'react';
 import { cn } from '@lib/utils';
+import { Banner } from './Banner/Banner';
 
 interface Props {
   className?: string;
@@ -7,6 +8,8 @@ interface Props {
 
 export const Courses = ({ className }: Props) => {
   return (
-    <div className={cn(className)}></div>
+    <div className={cn(className)}>
+        <Banner />
+    </div>
   );
 };
