@@ -7,6 +7,8 @@ interface Props {
 
 export const Modules = ({ className }: Props) => {
   return (
-    <div className={cn(className)}></div>
+    <div className={cn(className)}>
+        
+    </div>
   );
 };
