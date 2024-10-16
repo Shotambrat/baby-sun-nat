@@ -8,49 +8,49 @@ interface Props {
 
 const doctors = [
   {
-    image: "/images/about/doctors/Doctor.png",
+    image: "/images/about/doctors/doctor.png",
     fullname: "Муминова Мадина Мумин кизи",
     slug: 'muminova-madina-muminqizi',
     speciality: ["Хирург", "Ортопед"],
   },
   {
-    image: "/images/about/doctors/Doctor.png",
+    image: "/images/about/doctors/doctor.png",
     fullname: "Муминова Мадина Мумин кизи",
     slug: 'muminova-madina-muminqizi',
     speciality: ["Хирург", "Ортопед"],
   },
   {
-    image: "/images/about/doctors/Doctor.png",
+    image: "/images/about/doctors/doctor.png",
     fullname: "Муминова Мадина Мумин кизи",
     slug: 'muminova-madina-muminqizi',
     speciality: ["Хирург", "Ортопед"],
   },
   {
-    image: "/images/about/doctors/Doctor.png",
+    image: "/images/about/doctors/doctor.png",
     fullname: "Муминова Мадина Мумин кизи",
     slug: 'muminova-madina-muminqizi',
     speciality: ["Хирург", "Ортопед"],
   },
   {
-    image: "/images/about/doctors/Doctor.png",
+    image: "/images/about/doctors/doctor.png",
     fullname: "Муминова Мадина Мумин кизи",
     slug: 'muminova-madina-muminqizi',
     speciality: ["Хирург", "Ортопед"],
   },
   {
-    image: "/images/about/doctors/Doctor.png",
+    image: "/images/about/doctors/doctor.png",
     fullname: "Муминова Мадина Мумин кизи",
     slug: 'muminova-madina-muminqizi',
     speciality: ["Хирург", "Ортопед"],
   },
   {
-    image: "/images/about/doctors/Doctor.png",
+    image: "/images/about/doctors/doctor.png",
     fullname: "Муминова Мадина Мумин кизи",
     slug: 'muminova-madina-muminqizi',
     speciality: ["Хирург", "Ортопед"],
   },
   {
-    image: "/images/about/doctors/Doctor.png",
+    image: "/images/about/doctors/doctor.png",
     fullname: "Муминова Мадина Мумин кизи",
     slug: 'muminova-madina-muminqizi',
     speciality: ["Хирург", "Ортопед"],

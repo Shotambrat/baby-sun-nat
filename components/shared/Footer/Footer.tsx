@@ -13,7 +13,7 @@ export const Footer = ({ className }: Props) => {
       <div className="w-full max-w-[1500px] px-4 mx-auto py-12 grid grid-cols-1 mdx:grid-cols-2 lgx:grid-cols-4 gap-8">
         <div className="space-y-8">
           <Image
-            src={"/images/map/Footer-logo.png"}
+            src={"/images/footer/Footer-logo.png"}
             width={1000}
             height={1000}
             quality={100}
