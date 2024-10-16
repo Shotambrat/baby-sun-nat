@@ -78,29 +78,12 @@ const banner = [
     link: "/",
     bannerPhoto: "/images/main/banner/image-desktop.png",
   },
-  {
-    id: 4,
-    title: "Хирургия",
-    description:
-      "Высокоточные операции с применением современных методик для быстрого восстановления и максимальной безопасности пациента",
-    buttonName: "Подробнее",
-    link: "/",
-    bannerPhoto: "/images/main/banner/image-desktop.png",
-  },
-  {
-    id: 5,
-    title: "Хирургия",
-    description:
-      "Высокоточные операции с применением современных методик для быстрого восстановления и максимальной безопасности пациента",
-    buttonName: "Подробнее",
-    link: "/",
-    bannerPhoto: "/images/main/banner/image-desktop.png",
-  },
 ];
 
 export const Banner = ({ className }: Props) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef<HTMLDivElement | null>(null);
+  const touchStartX = useRef<number | null>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -111,18 +94,19 @@ export const Banner = ({ className }: Props) => {
 
   const handleSwipe = (e: TouchEvent) => {
     const touchEndX = e.changedTouches[0].clientX;
-    const touchStartX = slideRef.current?.startX || 0;
-    if (touchEndX - touchStartX > 50) {
-      prevSlide();
-    } else if (touchStartX - touchEndX > 50) {
-      nextSlide();
+    if (touchStartX.current !== null) {
+      const touchStartXValue = touchStartX.current;
+      if (touchEndX - touchStartXValue > 50) {
+        prevSlide();
+      } else if (touchStartXValue - touchEndX > 50) {
+        nextSlide();
+      }
     }
+    touchStartX.current = null; // сбросить начальную точку после свайпа
   };
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (slideRef.current) {
-      slideRef.current.startX = e.touches[0].clientX;
-    }
+  const handleTouchStart = (e: TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX; // сохраняем начальную точку касания
   };
 
   const nextSlide = () => {
@@ -136,16 +120,14 @@ export const Banner = ({ className }: Props) => {
   useEffect(() => {
     const slider = slideRef.current;
     if (slider) {
-      slider.addEventListener("touchstart", handleTouchStart as EventListener);
-      slider.addEventListener("touchend", handleSwipe as EventListener);
+      // Преобразуем тип в unknown, а затем в конкретный тип TouchEvent
+      slider.addEventListener("touchstart", handleTouchStart as unknown as EventListener);
+      slider.addEventListener("touchend", handleSwipe as unknown as EventListener);
     }
     return () => {
       if (slider) {
-        slider.removeEventListener(
-          "touchstart",
-          handleTouchStart as EventListener
-        );
-        slider.removeEventListener("touchend", handleSwipe as EventListener);
+        slider.removeEventListener("touchstart", handleTouchStart as unknown as EventListener);
+        slider.removeEventListener("touchend", handleSwipe as unknown as EventListener);
       }
     };
   }, []);
@@ -155,7 +137,7 @@ export const Banner = ({ className }: Props) => {
     initial: { opacity: 0, x: 100 },
     animate: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: -100 },
-    transition: { duration: 0.7 },
+    transition: { duration: 0.7 }, // Указываем объект transition с параметрами
   };
 
   return (
@@ -176,7 +158,7 @@ export const Banner = ({ className }: Props) => {
               initial="initial"
               animate="animate"
               exit="exit"
-              transition="transition"
+              transition={{ duration: 0.7, ease: "easeInOut" }} // Объект с параметрами transition
               variants={slideAnimation}
               className="flex flex-col w-full lgx:max-w-[500px] max-lgx:px-4 max-lgx:py-12"
             >
@@ -202,7 +184,7 @@ export const Banner = ({ className }: Props) => {
               initial="initial"
               animate="animate"
               exit="exit"
-              transition="transition"
+              transition={{ duration: 0.7, ease: "easeInOut" }} // Объект с параметрами transition
               variants={slideAnimation}
               className="flex flex-col w-full h-full items-end"
             >
@@ -212,7 +194,7 @@ export const Banner = ({ className }: Props) => {
                 height={3000}
                 quality={100}
                 alt={`Banner ${currentSlide}`}
-                className="w-full lgx:absolute  bottom-0 object-contain lgx:object-cover h-full"
+                className="w-full lgx:absolute bottom-0 object-contain lgx:object-cover h-full"
               />
             </motion.div>
           </AnimatePresence>
