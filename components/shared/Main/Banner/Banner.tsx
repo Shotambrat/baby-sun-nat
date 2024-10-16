@@ -161,15 +161,15 @@ export const Banner = ({ className }: Props) => {
   return (
     <section
       className={cn(
-        "w-full mdx:h-screen70 flex flex-col relative bg-[#F1F8FF]",
+        "w-full mdx:h-screen70 overflow-hidden flex flex-col relative bg-[#F1F8FF]",
         className
       )}
     >
       <div
         ref={slideRef}
-        className="w-full flex justify-between max-mdx:gap-12 max-lgx:flex-col flex-grow"
+        className="w-full flex justify-between max-lgx:flex-col flex-grow"
       >
-        <div className="flex-1 flex-grow flex justify-center items-center">
+        <div className="flex-1 flex justify-center items-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -178,16 +178,16 @@ export const Banner = ({ className }: Props) => {
               exit="exit"
               transition="transition"
               variants={slideAnimation}
-              className="flex flex-col w-full lgx:max-w-[500px]"
+              className="flex flex-col w-full lgx:max-w-[500px] max-lgx:px-4 max-lgx:py-12"
             >
-              <h2 className="text-5xl text-[#008CFF] font-bold mb-4">
+              <h2 className="text-5xl text-[#009FE3] font-bold mb-4">
                 {banner[currentSlide].title}
               </h2>
               <p className="text-lg text-[#4A4A4A] mb-6">
                 {banner[currentSlide].description}
               </p>
               <a href={banner[currentSlide].link}>
-                <button className="bg-[#008CFF] text-white py-3 px-12 rounded-full hover:bg-[#006FCC] transition-all">
+                <button className="bg-[#009FE3] text-white py-3 px-12 rounded-full hover:bg-[#006FCC] transition-all">
                   {banner[currentSlide].buttonName}
                 </button>
               </a>
@@ -195,30 +195,40 @@ export const Banner = ({ className }: Props) => {
           </AnimatePresence>
         </div>
 
-        <div className="h-full flex-grow relative flex items-end flex-1 overflow-hidden">
+        <div className="h-full relative flex items-end flex-1 overflow-hidden">
           <AnimatePresence mode="wait">
-          <motion.div
-            key={currentSlide}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition="transition"
-            variants={slideAnimation}
-            className="flex flex-col w-full h-full items-end"
-          >
-            <Image
-            src={banner[currentSlide].bannerPhoto}
-            width={3000}
-            height={3000}
-            quality={100}
-            alt={`Banner ${currentSlide}`}
-            className="w-full lgx:absolute  bottom-0 object-contain lgx:object-cover h-full"
-            />
-          </motion.div>
-        </AnimatePresence>
+            <motion.div
+              key={currentSlide}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              transition="transition"
+              variants={slideAnimation}
+              className="flex flex-col w-full h-full items-end"
+            >
+              <Image
+                src={banner[currentSlide].bannerPhoto}
+                width={3000}
+                height={3000}
+                quality={100}
+                alt={`Banner ${currentSlide}`}
+                className="w-full lgx:absolute  bottom-0 object-contain lgx:object-cover h-full"
+              />
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
-      <div className="w-full h-[80px] bg-white"></div>
+      <div className="w-full h-[80px] gap-4 bg-white flex justify-center items-center">
+        {banner.map((_, index) => (
+          <div key={index} className="w-[40px] bg-[#E4F1FF] h-[3px] overflow-hidden relative">
+            <div
+              className={`absolute transition-all duration-0 -left-1/2 h-[3px]  ${
+                index === currentSlide ? "w-full" : "w-1/3"
+              } bg-[#009FE3] ${currentSlide === index ? "line-anima" : ""}`}
+            ></div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 };

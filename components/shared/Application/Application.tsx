@@ -108,9 +108,6 @@ export const Application = ({ className }: Props) => {
                     "&:after": { borderBottomColor: "gold" }, // Золотая линия при фокусе
                   }}
                 >
-                  <MenuItem value="">
-                    <em>Не выбрано</em>
-                  </MenuItem>
                   <MenuItem value="consultation">Консультация</MenuItem>
                   <MenuItem value="treatment">Лечение</MenuItem>
                   <MenuItem value="diagnostics">Диагностика</MenuItem>
