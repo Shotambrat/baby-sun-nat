@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { Request } from "../../Request/Request";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
+import { Link } from "@/i18n/routing";
 
 interface Props {
   className?: string;
@@ -18,11 +19,11 @@ export const Tools = ({ className }: Props) => {
   const t = useTranslations("Headers.Navigation");
 
   const navigationItems = [
-    { title: t("course"), href: "#course" },
-    { title: t("teachers"), href: "#teachers" },
-    { title: t("reviews"), href: "#reviews" },
-    { title: t("education"), href: "#education" },
-    { title: t("gallery"), href: "#gallery" },
+    { title: t('course'), href: '/services/hirurgiya' },
+    { title: t('teachers'), href: '/courses/shrot' },
+    { title: t('reviews'), href: '/about' },
+    { title: t('education'), href: '/reviews' },
+    { title: t('gallery'), href: '/contacts' },
   ];
 
   const handleScroll = (href: string) => {
@@ -71,7 +72,8 @@ export const Tools = ({ className }: Props) => {
         {/* Navigation items */}
         <nav className="py-4">
           {navigationItems.map((item, index) => (
-            <button
+            <Link
+            href={item.href}
               key={index}
               onClick={() => handleScroll(item.href)}
               className="flex items-center justify-between py-4 border-b border-neutral-200 w-full text-left"
@@ -80,7 +82,7 @@ export const Tools = ({ className }: Props) => {
                 {item.title}
               </span>
               <ChevronRight className="text-gray-400" />
-            </button>
+            </Link>
           ))}
         </nav>
 
