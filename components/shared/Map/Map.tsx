@@ -10,7 +10,7 @@ interface Props {
 export const Map = ({ className }: Props) => {
   useEffect(() => {
     const map = L.map('map', {
-      center: [41.2995, 69.2869], // Центр Ташкента
+      center: [41.247113, 69.158403], // Центр Ташкента
       zoom: 13,
     });
 
@@ -27,9 +27,11 @@ export const Map = ({ className }: Props) => {
     });
 
     // Добавляем маркер с кастомной иконкой
-    L.marker([41.2995, 69.2869], { icon: customIcon })
+    L.marker([41.247113, 69.158403], { icon: customIcon })
       .addTo(map)
-
+      .on('click', ()=> {
+        window.open("https://yandex.com.tr/harita/10335/tashkent/?ll=69.160185%2C41.247719&mode=poi&poi%5Bpoint%5D=69.158403%2C41.247113&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D203824394596&z=17.78", "_blank")
+      })
     return () => {
       map.remove();
     };
