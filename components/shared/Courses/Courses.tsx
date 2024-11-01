@@ -6,6 +6,7 @@ import { Modules } from './Modules/Modules';
 import { Application } from '../Application/Application';
 import { Map } from '../Map/Map';
 import { Teachers } from './Teachers/Teachers';
+import { Bonuses } from './Bonuses/Bonuses';
 
 interface Props {
   className?: string;
@@ -18,6 +19,7 @@ export const Courses = ({ className }: Props) => {
         <About />
         <Modules />
         <Teachers />
+        <Bonuses />
         <Application />
         <Map />
     </div>

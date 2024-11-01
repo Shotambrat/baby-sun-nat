@@ -1,6 +1,8 @@
 import React from "react";
 import { cn } from "@lib/utils";
+import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui";
+import { Request } from "../../Request/Request";
 
 interface Props {
   className?: string;
@@ -46,57 +48,88 @@ export const Modules = ({ className }: Props) => {
                 <p className="text-[#009FE3] font-semibold">Модуль 1</p>
                 <h3 className="text-3xl font-bold mt-4">Основы ШРОТ-терапии</h3>
                 <p className="mt-2 font-medium">
-                  Анатомия и физиология позвоночника. <br /> Теоретические аспекты
-                  диагностики сколиоза.
+                Введение в основы ШРОТ-терапии, анатомию и физиологию позвоночника, базовые принципы диагностики сколиоза.
                 </p>
                 <hr className="my-8 border-2" />
                 <ul className="grid grid-cols-2 gap-4 mt-6">
                   <li className="flex items-start gap-2">
-                    <img src={'/svg/courses/module/check.svg'} alt="Check" className="w-6 h-6" />
+                    <img
+                      src={"/svg/courses/module/check.svg"}
+                      alt="Check"
+                      className="w-6 h-6"
+                    />
                     <span>Введение в методику</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <img src={'/svg/courses/module/check.svg'} alt="Check" className="w-6 h-6" />
+                    <img
+                      src={"/svg/courses/module/check.svg"}
+                      alt="Check"
+                      className="w-6 h-6"
+                    />
                     <span>Изучение базовых принципов лечения сколиоза</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <img src={'/svg/courses/module/check.svg'} alt="Check" className="w-6 h-6" />
-                    <span>Еще какой-то пункт</span>
+                    <img
+                      src={"/svg/courses/module/check.svg"}
+                      alt="Check"
+                      className="w-6 h-6"
+                    />
+                    <span>Особенности анатомии и физиологии позвоночника</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <img src={'/svg/courses/module/check.svg'} alt="Check" className="w-6 h-6" />
-                    <span>Еще какой-то пункт</span>
+                    <img
+                      src={"/svg/courses/module/check.svg"}
+                      alt="Check"
+                      className="w-6 h-6"
+                    />
+                    <span>Основы диагностики и анализ искривлений позвоночника</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <img src={'/svg/courses/module/check.svg'} alt="Check" className="w-6 h-6" />
-                    <span>Еще какой-то пункт</span>
+                    <img
+                      src={"/svg/courses/module/check.svg"}
+                      alt="Check"
+                      className="w-6 h-6"
+                    />
+                    <span>Подготовка пациента к началу курса</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <img src={'/svg/courses/module/check.svg'} alt="Check" className="w-6 h-6" />
-                    <span>Еще какой-то пункт</span>
+                    <img
+                      src={"/svg/courses/module/check.svg"}
+                      alt="Check"
+                      className="w-6 h-6"
+                    />
+                    <span>Обучение первой группе упражнений на дыхание</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <img src={'/svg/courses/module/check.svg'} alt="Check" className="w-6 h-6" />
-                    <span>Еще какой-то пункт</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <img src={'/svg/courses/module/check.svg'} alt="Check" className="w-6 h-6" />
-                    <span>Еще какой-то пункт</span>
+                    <img
+                      src={"/svg/courses/module/check.svg"}
+                      alt="Check"
+                      className="w-6 h-6"
+                    />
+                    <span>Обзор методик коррекции осанки</span>
                   </li>
                 </ul>
               </div>
-              <div className="w-1/3 bg-[#44C3FA] text-white p-8 rounded-lg shadow-lg">
-                <div className="mb-6">
-                  <h4 className="text-2xl font-bold">4 месяца</h4>
+              <div className="w-1/3 relative overflow-hidden bg-[#009FE3] text-white p-8 flex flex-col gap-8 rounded-lg shadow-lg">
+                <div>
+                  <h4 className="text-4xl font-medium">4 месяца</h4>
                   <p className="text-lg">длительность курса</p>
                 </div>
-                <div className="mb-8">
-                  <h4 className="text-2xl font-bold">2 000 у.е.</h4>
+                <hr />
+                <div>
+                  <h4 className="text-4xl font-medium">2 000 у.е.</h4>
                   <p className="text-lg">стоимость курса</p>
                 </div>
-                <button className="w-full bg-white text-blue-500 font-semibold py-3 px-6 rounded-lg hover:bg-gray-100">
-                  Записаться на курс
-                </button>
+                <Request title="Заприсаться на курс" className="self-start bg-white text-[#009FE3] font-semibold py-3 px-6 rounded-full hover:bg-gray-100" />
+                <div className="absolute -bottom-12 -right-2">
+                  <Image
+                    src={"/images/application/Mask group.svg"}
+                    width={1000}
+                    height={1000}
+                    alt="Application Icon on Background"
+                    className="max-h-[200px] max-w-[200px] h-full w-full"
+                  />
+                </div>
               </div>
             </TabsContent>
 

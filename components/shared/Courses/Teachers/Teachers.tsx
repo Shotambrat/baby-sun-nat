@@ -4,6 +4,7 @@ import { cn } from "@lib/utils";
 import { PhotoProvider, PhotoView } from "react-photo-view"; // Import react-photo-view
 import "react-photo-view/dist/react-photo-view.css"; // Import react-photo-view styles
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui"; // Assuming you're using the shadcn carousel
+import Image from "next/image";
 
 interface Props {
   className?: string;
@@ -66,13 +67,15 @@ export const Teachers = ({ className }: Props) => {
             <CarouselContent>
               {teachers.map((teacher) => (
                 <CarouselItem key={teacher.id} className="md:basis-1/2 lg:basis-1/4">
-                  <div className="p-4">
+                  <div className="">
                     <div className="bg-white shadow-md rounded-lg overflow-hidden">
                       <PhotoView src={teacher.image}>
-                        <img
+                        <Image
                           src={teacher.image}
+                          width={500}
+                          height={500}
                           alt={teacher.name}
-                          className="cursor-pointer object-cover h-72 w-full" // Uniform height of 72
+                          className="cursor-pointer object-cover rounded-xl h-[400px] w-full" // Uniform height of 72
                         />
                       </PhotoView>
                       <div className="p-4">
