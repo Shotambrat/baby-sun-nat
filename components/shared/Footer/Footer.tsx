@@ -12,6 +12,7 @@ export const Footer = ({ className }: Props) => {
     <footer className={cn("bg-[#F1F4F8] flex flex-col gap-4", className)}>
       <div className="w-full max-w-[1500px] px-4 mx-auto py-12 grid grid-cols-1 mdx:grid-cols-2 lgx:grid-cols-4 gap-8">
         <div className="space-y-8">
+          <a href="/">
           <Image
             src={"/images/footer/Footer-logo.png"}
             width={1000}
@@ -20,7 +21,10 @@ export const Footer = ({ className }: Props) => {
             alt="Footer Logo of Baby Sun"
             className="w-full max-w-[200px] h-auto"
           />
+
+          </a>
           <div className="flex gap-4 items-center">
+            <a target="_blank" href="https://www.instagram.com/babysun_nat_bolalarklinikasi?igsh=emxpZzZraXgxeTV4">
             <Image
               src={"/svg/footer/Inst.svg"}
               width={100}
@@ -28,13 +32,18 @@ export const Footer = ({ className }: Props) => {
               alt="Instagrm Icon in Footer"
               className="w-10 max-mdx:w-12"
             />
-            <Image
-              src={"/svg/footer/telegram.svg"}
-              width={100}
-              height={100}
-              alt="Instagrm Icon in Footer"
-              className="w-10 max-mdx:w-12"
-            />
+
+            </a>
+            <a target="_blank" href="https://t.me/bolalarmassajibabysun">
+              <Image
+                src={"/svg/footer/telegram.svg"}
+                width={100}
+                height={100}
+                alt="Instagrm Icon in Footer"
+                className="w-10 max-mdx:w-12"
+              />
+            </a>
+            <a href="https://www.facebook.com/share/KFm7J2eZ84uXdKEq/?mibextid=qi2Omg">
             <Image
               src={"/svg/footer/facebook.svg"}
               width={100}
@@ -42,6 +51,9 @@ export const Footer = ({ className }: Props) => {
               alt="Instagrm Icon in Footer"
               className="w-10 max-mdx:w-12"
             />
+
+            </a>
+            <a href="https://www.tiktok.com/@bolalarmassaji?_t=8qc1kdwsb1b&_r=1">
             <Image
               src={"/svg/footer/youtube.svg"}
               width={100}
@@ -49,12 +61,14 @@ export const Footer = ({ className }: Props) => {
               alt="Instagrm Icon in Footer"
               className="w-10 max-mdx:w-12"
             />
+
+            </a>
           </div>
         </div>
         <div className="flex flex-col gap-2">
           <h3 className="text-2xl max-mdx:text-4xl font-semibold">Адрес</h3>
           <p className="text-sm leading-5 max-mdx:text-xl font-medium w-full max-mdx:max-w-full max-w-[250px]">
-            г.Ташкент, ул Такая-то, проезд такой-то, дом такой-то
+          Городской посёлок Эшангузар, ул. Марказий Шифохона, 29
           </p>
           <Link
             href={"/contacts"}
@@ -71,28 +85,32 @@ export const Footer = ({ className }: Props) => {
           </Link>
         </div>
         <div className="flex flex-col gap-2">
-          <h3 className="text-2xl max-mdx:text-4xl font-semibold">Связаться с нами</h3>
+          <h3 className="text-2xl max-mdx:text-4xl font-semibold">
+            Связаться с нами
+          </h3>
           <a
-            href="tel:+998909999999"
+            href="tel:+998777026688"
             className="text-sm max-mdx:text-xl leading-5 font-medium w-full max-w-[250px]"
           >
-            +998 (90) 999-99-99
+           +998 (77) 702-66-88
           </a>
-          <a
+          {/* <a
             href="tel:+998909999999"
             className="text-sm max-mdx:text-xl leading-5 font-medium w-full max-w-[250px]"
           >
             +998 (90) 123-45-67
-          </a>
-          <a
+          </a> */}
+          {/* <a
             href="milto:name@domain.com"
             className="text-sm max-mdx:text-xl leading-5 font-medium w-full max-w-[250px]"
           >
             name@domain.com
-          </a>
+          </a> */}
         </div>
         <div className="flex flex-col gap-2">
-          <h3 className="text-2xl max-mdx:text-4xl font-semibold">График работы</h3>
+          <h3 className="text-2xl max-mdx:text-4xl font-semibold">
+            График работы
+          </h3>
           <p className="text-sm max-mdx:text-xl leading-5 font-medium w-full max-w-[250px]">
             8:00 - 17:00 пн-пт
           </p>
@@ -104,16 +122,11 @@ export const Footer = ({ className }: Props) => {
       <hr />
       <div className="flex w-full justify-between max-w-[1500px] px-4 mx-auto py-4">
         <div className="flex gap-12 max-mdx:gap-4 max-lgx: flex-wrap">
-          <p className="text-[#879EBC]">
-          2024 © BabySun. Все права защищены
-          </p>
-          <p className="text-[#879EBC]">
-          Политика конфиденциальности
-          </p>
-          <p className="text-[#879EBC]">
-          Пользовательское соглашение
-          </p>
+          <p className="text-[#879EBC]">2024 © BabySun. Все права защищены</p>
+          <p className="text-[#879EBC]">Политика конфиденциальности</p>
+          <p className="text-[#879EBC]">Пользовательское соглашение</p>
         </div>
+        <a target="_blank" href="https://result-me.uz/">
         <Image
           src={"/svg/footer/result-logo.svg"}
           width={1000}
@@ -122,10 +135,12 @@ export const Footer = ({ className }: Props) => {
           alt="Result Agency footer Logo"
           className="w-full max-mdx:hidden max-w-[150px]"
         />
+
+        </a>
       </div>
       <hr className="mdx:hidden" />
       <div className="mdx:hidden w-full flex justify-center py-8">
-      <Image
+        <Image
           src={"/svg/footer/result-logo.svg"}
           width={1000}
           height={1000}
