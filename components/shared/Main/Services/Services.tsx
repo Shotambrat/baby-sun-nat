@@ -51,29 +51,29 @@ export const Services = ({ className }: Props) => {
     },
     {
       icon: "/svg/main/services/scissors.svg",
-      title: "Терапия",
-      slug: "/services/therapy",
+      title: "Ортопедия",
+      slug: "/services/orthopedics",
     },
     {
       icon: "/svg/main/services/scissors.svg",
-      title: "Диагностика",
-      slug: "/services/diagnostics",
+      title: "СПА для женщин",
+      slug: "/services/women-spa",
     },
     {
       icon: "/svg/main/services/scissors.svg",
-      title: "Стоматология",
-      slug: "/services/dentistry",
+      title: "Косметология",
+      slug: "/services/cosmetology",
     },
     {
       icon: "/svg/main/services/scissors.svg",
-      title: "Офтальмология",
-      slug: "/services/ophthalmology",
+      title: "Детский массаж",
+      slug: "/services/child-massage",
     },
-    {
-      icon: "/svg/main/services/scissors.svg",
-      title: "Педиатрия",
-      slug: "/services/pediatrics",
-    },
+    // {
+    //   icon: "/svg/main/services/scissors.svg",
+    //   title: "Педиатрия",
+    //   slug: "/services/pediatrics",
+    // },
   ];
 
   return (
@@ -85,13 +85,13 @@ export const Services = ({ className }: Props) => {
             <ServiceCard key={index} card={card} />
           ))}
         </div>
-        <div className="w-full flex items-center justify-center">
+        {/* <div className="w-full flex items-center justify-center">
           <Link href={"/services"}>
             <Button className="px-8 rounded-full py-4 text-xl">
               Показать все улуги
             </Button>
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );
