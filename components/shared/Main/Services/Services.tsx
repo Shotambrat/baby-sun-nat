@@ -19,13 +19,15 @@ const ServiceCard = ({ card }: { card: Card }) => (
     href={card.slug}
     className="bg-[#F1F4F8] p-6 rounded-xl space-y-12 shadow-md hover:shadow-lg transition-shadow flex flex-col items-start"
   >
-    <Image
-      src={card.icon}
-      width={100}
-      height={100}
-      alt={`Service Card of ${card.slug}`}
-      className="w-8"
-    />
+    <div className="w-full h-full max-w-10 max-h-10 flex items-center">
+      <Image
+        src={card.icon}
+        width={100}
+        height={100}
+        alt={`Service Card of ${card.slug}`}
+        className="w-full h-full object-cover"
+      />
+    </div>
     <div className="space-y-1">
       <h3 className="text-xl font-semibold">{card.title}</h3>
       <p className="text-[#009FE3] flex gap-3 items-center font-semibold hover:underline">
@@ -45,27 +47,27 @@ const ServiceCard = ({ card }: { card: Card }) => (
 export const Services = ({ className }: Props) => {
   const cards: Card[] = [
     {
-      icon: "/svg/main/services/scissors.svg",
+      icon: "/svg/main/services/surgery.svg",
       title: "Хирургия",
       slug: "/services/surgery",
     },
     {
-      icon: "/svg/main/services/scissors.svg",
+      icon: "/svg/main/services/orthopedy.svg",
       title: "Ортопедия",
       slug: "/services/orthopedics",
     },
     {
-      icon: "/svg/main/services/scissors.svg",
+      icon: "/svg/main/services/spa.svg",
       title: "СПА для женщин",
       slug: "/services/women-spa",
     },
     {
-      icon: "/svg/main/services/scissors.svg",
+      icon: "/svg/main/services/cosmetology.svg",
       title: "Косметология",
       slug: "/services/cosmetology",
     },
     {
-      icon: "/svg/main/services/scissors.svg",
+      icon: "/svg/main/services/guidance_massage.svg",
       title: "Детский массаж",
       slug: "/services/child-massage",
     },
