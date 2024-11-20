@@ -14,19 +14,19 @@ const items = [
       "Каждая процедура подбирается в зависимости от состояния и типа кожи клиента для достижения лучших результатов",
   },
   {
-    icon: "/svg/services/benefits/2.svg",
+    icon: "/svg/services/benefits/2cos.png",
     title: "Высококачественные материалы",
     description:
       "Использование сертифицированных и безопасных материалов для обеспечения безопасности процедур",
   },
   {
-    icon: "/svg/services/benefits/3.svg",
+    icon: "/svg/services/benefits/3cos.png",
     title: "Современные методики",
     description:
       "Применение новейших технологий и техник для улучшения состояния кожи",
   },
   {
-    icon: "/svg/services/benefits/4.svg",
+    icon: "/svg/services/benefits/4cos.png",
     title: "Здоровье и красота кожи",
     description:
       "Процедуры направлены на улучшение цвета кожи, её упругости и здоровья",

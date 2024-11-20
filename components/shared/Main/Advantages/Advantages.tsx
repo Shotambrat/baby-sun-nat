@@ -9,7 +9,7 @@ interface Props {
 export const Advantages = ({ className }: Props) => {
   return (
     <div className={cn("py-24", className)}>
-      <div className='w-full max-w-[1500px] px-4 space-y-12'>
+      <div className='w-full max-w-[1500px] px-4 space-y-12 mx-auto'>
         <h2 className="text-4xl font-bold">
           Преимущества клиники
         </h2>

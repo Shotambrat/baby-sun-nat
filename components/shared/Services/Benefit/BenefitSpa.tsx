@@ -8,25 +8,25 @@ interface Props {
 
 const items = [
   {
-    icon: "/svg/services/benefits/1.svg",
+    icon: "/svg/services/benefits/1spa.png",
     title: "Профессиональный подход",
     description:
       "Опытный специалист с двумя сертификатами гарантирует высокий уровень сервиса",
   },
   {
-    icon: "/svg/services/benefits/2.svg",
+    icon: "/svg/services/benefits/1.svg",
     title: "Индивидуальные программы",
     description:
       "Подбор процедур с учетом индивидуальных потребностей и предпочтений клиента",
   },
   {
-    icon: "/svg/services/benefits/3.svg",
+    icon: "/svg/services/benefits/3spa.png",
     title: "Расслабление и восстановление",
     description:
       "Процедуры направлены на снятие стресса, улучшение настроения и восстановление энергии",
   },
   {
-    icon: "/svg/services/benefits/4.svg",
+    icon: "/svg/services/benefits/4spa.png",
     title: "Использование натуральных продуктов",
     description:
       "Применение натуральных компонентов, таких как мед, камни и масла, для улучшения состояния кожи и тела",

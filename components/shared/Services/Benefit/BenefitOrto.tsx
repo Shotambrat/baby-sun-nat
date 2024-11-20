@@ -8,25 +8,25 @@ interface Props {
 
 const items = [
   {
-    icon: "/svg/services/benefits/1.svg",
+    icon: "/svg/services/benefits/3ort.png",
     title: "Многолетний опыт",
     description:
       "Более 18 лет опыта в ортопедии и травматологии, тысячи проведенных операций и процедур",
   },
   {
-    icon: "/svg/services/benefits/2.svg",
+    icon: "/svg/services/benefits/1.svg",
     title: "Индивидуальный подход",
     description:
       "Каждое лечение адаптировано под особенности каждого пациента, что позволяет достичь наилучших результатов",
   },
   {
-    icon: "/svg/services/benefits/3.svg",
+    icon: "/svg/services/benefits/4ort.png",
     title: "Современные методы",
     description:
       "Применение новейших методов диагностики и лечения для достижения максимальной эффективности",
   },
   {
-    icon: "/svg/services/benefits/4.svg",
+    icon: "/svg/services/benefits/2ort.png",
     title: "Безопасность и комфорт",
     description:
       "Тщательное внимание к безопасности процедур и обеспечению комфорта для каждого пациента",

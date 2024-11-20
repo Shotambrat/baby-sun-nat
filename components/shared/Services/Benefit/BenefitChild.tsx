@@ -8,25 +8,25 @@ interface Props {
 
 const items = [
   {
-    icon: "/svg/services/benefits/1.svg",
+    icon: "/svg/services/benefits/1child.png",
     title: "Комплексный подход",
     description:
       "Включает различные процедуры, такие как массаж, парафинотерапия и УВЧ для комплексного оздоровления",
   },
   {
-    icon: "/svg/services/benefits/2.svg",
+    icon: "/svg/services/benefits/2child.png",
     title: "Профессиональная забота",
     description:
       "Специалисты с опытом работы с детьми обеспечивают максимальный комфорт и безопасность",
   },
   {
-    icon: "/svg/services/benefits/3.svg",
+    icon: "/svg/services/benefits/1.svg",
     title: "Индивидуальные программы",
     description:
       "Программы лечения и массажа адаптированы под возраст и особенности здоровья каждого ребёнка",
   },
   {
-    icon: "/svg/services/benefits/4.svg",
+    icon: "/svg/services/benefits/4child.png",
     title: "Укрепление здоровья",
     description:
       "Процедуры направлены на улучшение общего состояния, укрепление иммунной системы и поддержку здоровья",

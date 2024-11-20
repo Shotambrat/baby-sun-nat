@@ -92,23 +92,20 @@ export const Tools = ({ className }: Props) => {
                   {/* Accordion Header */}
                   <button
                     onClick={() => handleAccordionToggle(item.title)}
-                    className={`flex justify-between items-center w-full py-4 text-left text-lg font-semibold ${
-                        openAccordion === item.title ? "text-[#009FE3]" : ""
+                    className={`flex justify-between items-center w-full py-4 text-left text-lg font-semibold ${openAccordion === item.title ? "text-[#009FE3]" : ""
                       } hover:text-[#009FE3] transition-colors duration-500`}
                   >
                     <span>{item.title}</span>
                     <ChevronDown
-                      className={`transition-transform duration-500 ${
-                        openAccordion === item.title ? "rotate-180" : ""
-                      }`}
+                      className={`transition-transform duration-500 ${openAccordion === item.title ? "rotate-180" : ""
+                        }`}
                     />
                   </button>
 
                   {/* Accordion Content */}
                   <div
-                    className={`overflow-hidden transition-all duration-500 ${
-                      openAccordion === item.title ? "max-h-screen" : "max-h-0"
-                    }`}
+                    className={`overflow-hidden transition-all duration-500 ${openAccordion === item.title ? "max-h-screen" : "max-h-0"
+                      }`}
                   >
                     <div className="pl-4 border-l-2 border-neutral-200">
                       {item.data.map((subItem, subIndex) => (
@@ -126,14 +123,14 @@ export const Tools = ({ className }: Props) => {
                 </div>
               ) : (
                 <button className="w-full" onClick={() => handleAccordionToggle(item.title)}>
-                <Link
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-between py-4 w-full text-left text-lg font-semibold hover:text-neutral-400 transition-all duration-500"
-                >
-                  <span>{item.title}</span>
-                  <ChevronRight className="text-gray-400" />
-                </Link>
+                  <Link
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-between py-4 w-full text-left text-lg font-semibold hover:text-neutral-400 transition-all duration-500"
+                  >
+                    <span>{item.title}</span>
+                    <ChevronRight className="text-gray-400" />
+                  </Link>
 
                 </button>
               )}
