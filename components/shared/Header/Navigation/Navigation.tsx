@@ -3,38 +3,40 @@ import React, { useState } from "react";
 import { Link } from "@/i18n/routing";
 import { Menu, Dropdown, Typography, Space } from "antd";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 interface Props {
   className?: string;
 }
 
 export const Navigation = ({ className }: Props) => {
+  const t = useTranslations("Headers.Navigation");
 
   const navigationItems = [
     {
-      title: 'Услуги',
+      title: t("Services"),
       href: "/services",
       data: [
-        { title: "Хирургия", href: "/services/surgery" },
-        { title: "Ортопедия", href: "/services/orthopedics" },
-        { title: "СПА для женщин", href: "/services/women-spa" },
-        { title: "Косметология", href: "/services/cosmetology" },
-        { title: "Детский массаж", href: "/services/child-massage" },
+        { title: t("Subservices.Surgery"), href: "/services/surgery" },
+        { title: t("Subservices.Orthopedics"), href: "/services/orthopedics" },
+        { title: t("Subservices.WomenSpa"), href: "/services/women-spa" },
+        { title: t("Subservices.Cosmetology"), href: "/services/cosmetology" },
+        { title: t("Subservices.ChildMassage"), href: "/services/child-massage" },
       ],
     },
     {
-      title: "Курсы",
+      title: t("Courses"),
       href: "/courses",
       data: [
-        { title: "ШРОТ-терапия", href: "/courses/shrot-therapy" },
-        { title: "Hijama & zuluk", href: "/courses/hijoma-and-zuluk" },
-        { title: "Медсестра", href: "/courses/nursery" },
-        { title: "Косметология", href: "/courses/cosmetology" },
+        { title: t("Subcourses.ShrotTherapy"), href: "/courses/shrot-therapy" },
+        { title: t("Subcourses.HijomaAndZuluk"), href: "/courses/hijoma-and-zuluk" },
+        { title: t("Subcourses.Nursery"), href: "/courses/nursery" },
+        { title: t("Subcourses.Cosmetology"), href: "/courses/cosmetology" },
       ],
     },
-    { title: "О нас", href: "/about" },
-    { title: "Отзывы", href: "/reviews" },
-    { title: "Контакты", href: "/contacts" },
+    { title: t("About"), href: "/about" },
+    { title: t("Reviews"), href: "/reviews" },
+    { title: t("Contacts"), href: "/contacts" },
   ];
 
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);

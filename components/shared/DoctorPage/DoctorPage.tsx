@@ -1,8 +1,11 @@
+'use client';
+
 import React from "react";
 import { cn } from "@lib/utils";
-import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { Request } from "../Request/Request";
+import { useParams, useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 interface Props {
   className?: string;
@@ -11,38 +14,63 @@ interface Props {
 const doctors = [
   {
     slug: "muminova-madina-muminqizi",
-    data: {
-        fullname: "Муминова Мадина Мумин кизи",
-        info: '[Имя врача] — ведущий специалист в области [область медицины], имеет многолетний опыт работы с детьми. Он/она специализируется на [перечень специализаций] и постоянно повышает квалификацию на международных медицинских конференциях и симпозиумах. Под его/её руководством клиника BabySun стала одной из лучших в регионе. Его/её основной целью является обеспечение качественного медицинского обслуживания, направленного на восстановление здоровья и поддержание комфорта маленьких пациентов',
-        graphic: ["8:00 - 17:00 пн-пт", "8:00 - 15:00 сб"],
-      speciality: ["Хирург", "Ортопед"],
-    },
+    doctorKey: "muminova",
+    image: "/images/about/doctors/doctor.png",
   },
+  {
+    slug: "kuchimov-quvondiq-pirnazarovich",
+    doctorKey: "kuchimov",
+    image: "/images/about/doctors/kuchimov.jpg",
+  },
+  // ... остальные врачи
 ];
 
 export const DoctorPage = ({ className }: Props) => {
+  const t = useTranslations('DoctorPage');
+  const params = useParams();
+  const router = useRouter();
+  const { slug } = params;
+
+  if (!slug) {
+    return null;
+  }
+
+  const doctor = doctors.find((doc) => doc.slug === slug);
+
+  if (!doctor) {
+    return <p>{t('doctorNotFound')}</p>;
+  }
+
+  // Получаем данные врача из переводов
+  const doctorData = {
+    fullname: t(`${doctor.doctorKey}.fullname`),
+    info: t(`${doctor.doctorKey}.info`),
+    speciality: t.raw(`${doctor.doctorKey}.speciality`) as string[],
+    graphic: t.raw(`${doctor.doctorKey}.graphic`) as string[],
+  };
+
   return (
     <section className={cn("pb-24", className)}>
       <div className="w-full max-w-[1500px] px-4 mx-auto flex flex-col gap-8 pt-8">
         <div>
-          <Link
-            href={"/"}
+          <button
+            onClick={() => router.back()}
             className="flex items-center gap-2 text-[#009FE3] text-xl font-semibold hover:gap-4 transition-all duration-150"
           >
             <Image
-              src={"/svg/doctorPage/left-arrow.svg"}
+              src="/svg/doctorPage/left-arrow.svg"
               width={100}
               height={100}
               alt="Back icon"
               className="w-2"
             />
-            Назад
-          </Link>
+            {t('back')}
+          </button>
         </div>
         <div className="flex max-mdx:flex-col gap-8">
-          <div className="">
+          <div>
             <Image
-              src={"/images/about/doctors/doctor.png"}
+              src={doctor.image || "/images/about/doctors/doctor.png"}
               width={1000}
               height={1000}
               quality={100}
@@ -53,38 +81,36 @@ export const DoctorPage = ({ className }: Props) => {
           <div className="flex flex-col gap-6">
             <div>
               <div className="text-lg font-semibold text-[#009FE3]">
-                {doctors[0].data.speciality.map((spec, index) => (
+                {doctorData.speciality.map((spec, index) => (
                   <span key={index}>
                     {spec}
-                    {index < doctors[0].data.speciality.length - 1
-                      ? " | "
-                      : ""}{" "}
-                    {/* Разделитель " | " */}
+                    {index < doctorData.speciality.length - 1 ? " | " : ""}
                   </span>
                 ))}
               </div>
             </div>
             <div className="flex flex-col gap-4">
-                <h1 className="text-3xl font-bold mdx:text-4xl">
-                    {doctors[0].data.fullname}
-                </h1>
-                <p className="w-full max-w-[500px]">
-                    {doctors[0].data.info}
-                </p>
-                <hr />
-                <div>
-                    <p className="text-[#009FE3] font-semibold">График работы</p>
-                    <ul>
-                        {
-                            doctors[0].data.graphic.map((item, index) => (
-                                <li className="font-bold text-lg" key={index}>{item}</li>
-                            ))
-                        }
-                    </ul>
-                </div>
+              <h1 className="text-3xl font-bold mdx:text-4xl">
+                {doctorData.fullname}
+              </h1>
+              <p className="w-full max-w-[500px]">{doctorData.info}</p>
+              <hr />
+              <div>
+                <p className="text-[#009FE3] font-semibold">{t('schedule')}</p>
+                <ul>
+                  {doctorData.graphic.map((item, index) => (
+                    <li className="font-bold text-lg" key={index}>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
             <div>
-              <Request title="Записаться на прием" className="max-mdx:w-full" />
+              <Request
+                title={t('makeAppointment')}
+                className="max-mdx:w-full"
+              />
             </div>
           </div>
         </div>

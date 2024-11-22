@@ -1,8 +1,10 @@
+
 import React from "react";
 import { cn } from "@lib/utils";
 import Image from "next/image";
 import { Button } from "@/components/ui";
 import { useTranslations } from "next-intl"; // Подключаем локализацию
+import Link from "next/link";
 
 interface Props {
   className?: string;
@@ -41,9 +43,12 @@ export const History = ({ className }: Props) => {
             {t("description")}
           </p>
           <div>
-            <Button className="text-xl font-semibold text-white px-16 rounded-full py-4 bg-[#009FE3]">
-              {t("licenses")}
-            </Button>
+            {/* Используем якорную ссылку для прокрутки к компоненту Licenses */}
+            <Link href="#licenses">
+              <Button className="text-xl font-semibold text-white px-16 rounded-full py-4 bg-[#009FE3]">
+                {t("licenses")}
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,10 +1,10 @@
 import React from "react";
 import { cn } from "@lib/utils";
 import { Link } from "@/i18n/routing";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui"; // Assuming you are using Carousel from shadcn
-
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui";
+import { useTranslations } from "next-intl";
 interface Props {
-    className?: string;
+  className?: string;
 }
 
 const reviews = [
@@ -82,11 +82,13 @@ const reviews = [
 ];
 
 export const Reviews = ({ className }: Props) => {
+  const t = useTranslations("Reviews");
+
   return (
     <div className={cn("py-24", className)}>
       <div className="w-full max-w-[1500px] px-4 mx-auto space-y-8">
-        <h2 className="text-4xl font-bold">Отзывы пациентов</h2>
-        
+        <h2 className="text-4xl font-bold">{t('title')}</h2>
+
         <Carousel className="space-y-12">
           <CarouselContent>
             {reviews.map((review, index) => (

@@ -1,87 +1,57 @@
+// Teachers.tsx
 "use client";
 import React from "react";
 import { cn } from "@lib/utils";
-import { PhotoProvider, PhotoView } from "react-photo-view"; // Import react-photo-view
-import "react-photo-view/dist/react-photo-view.css"; // Import react-photo-view styles
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui"; // Assuming you're using the shadcn carousel
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui";
 import Image from "next/image";
+import { useTranslations, useLocale } from "next-intl";
+
+type SupportedLocales = 'ru' | 'en';
+
+interface Teacher {
+  id: number;
+  name: Record<SupportedLocales, string>;
+  description: Record<SupportedLocales, string>;
+  image: string;
+}
 
 interface Props {
   className?: string;
+  teachers: Teacher[];
 }
 
-// Example teachers data
-const teachers = [
-  {
-    id: 1,
-    name: "Муминова Мадина",
-    description:
-      "Сертифицированный инструктор, физический терапевт, специализирующийся на коррекции сколиоза и других нарушений осанки",
-    image: "/images/about/doctors/doctor.png", // Replace with correct image path
-  },
-  {
-    id: 2,
-    name: "Александр Перхун",
-    description:
-      "Сертифицированный инструктор PSSE (Schroth Method by Nikos Karavidas), физический терапевт и основатель 'Scolios clinic' в Краснодаре",
-    image: "/images/courses/teachers/perhun-photo.png",
-  },
-  {
-    id: 3,
-    name: "Муминова Мадина",
-    description:
-      "Сертифицированный инструктор, физический терапевт, специализирующийся на коррекции сколиоза и других нарушений осанки",
-    image: "/images/about/doctors/doctor.png",
-  },
-  {
-    id: 4,
-    name: "Александр Перхун",
-    description:
-      "Сертифицированный инструктор PSSE (Schroth Method by Nikos Karavidas), физический терапевт и основатель 'Scolios clinic' в Краснодаре",
-    image: "/images/courses/teachers/perhun-photo.png",
-  },
-  {
-    id: 5,
-    name: "Муминова Мадина",
-    description:
-      "Сертифицированный инструктор, физический терапевт, специализирующийся на коррекции сколиоза и других нарушений осанки",
-    image: "/images/about/doctors/doctor.png",
-  },
-  {
-    id: 6,
-    name: "Александр Перхун",
-    description:
-      "Сертифицированный инструктор PSSE (Schroth Method by Nikos Karavidas), физический терапевт и основатель 'Scolios clinic' в Краснодаре",
-    image: "/images/courses/teachers/perhun-photo.png",
-  },
-];
+export const Teachers = ({ className, teachers }: Props) => {
+  const t = useTranslations(); 
+  const locale = useLocale();
+  const currentLanguage: SupportedLocales = ['ru', 'en'].includes(locale) ? (locale as SupportedLocales) : 'en';
 
-export const Teachers = ({ className }: Props) => {
   return (
     <div className={cn("py-24", className)}>
       <div className="w-full max-w-[1500px] px-4 mx-auto space-y-8">
-        <h2 className="text-4xl font-semibold">Преподаватели</h2>
+        <h2 className="text-4xl font-semibold">{t("Main.Teachers.teachers")}</h2>
 
         <PhotoProvider>
           <Carousel className="space-y-12">
             <CarouselContent>
               {teachers.map((teacher) => (
                 <CarouselItem key={teacher.id} className="md:basis-1/2 lg:basis-1/4">
-                  <div className="">
-                    <div className="bg-white shadow-md rounded-lg overflow-hidden">
-                      <PhotoView src={teacher.image}>
-                        <Image
-                          src={teacher.image}
-                          width={500}
-                          height={500}
-                          alt={teacher.name}
-                          className="cursor-pointer object-cover rounded-xl h-[400px] w-full" // Uniform height of 72
-                        />
-                      </PhotoView>
-                      <div className="p-4">
-                        <h3 className="text-lg font-bold">{teacher.name}</h3>
-                        <p className="text-sm text-gray-600 mt-2">{teacher.description}</p>
-                      </div>
+                  <div className="bg-white shadow-md rounded-lg overflow-hidden">
+                    <PhotoView src={teacher.image}>
+                      <Image
+                        src={teacher.image}
+                        width={500}
+                        height={500}
+                        alt={teacher.name[currentLanguage]}
+                        className="cursor-pointer object-cover rounded-xl h-[400px] w-full"
+                      />
+                    </PhotoView>
+                    <div className="p-4">
+                      <h3 className="text-lg font-bold">{teacher.name[currentLanguage]}</h3>
+                      <p className="text-sm text-gray-600 mt-2">
+                        {teacher.description[currentLanguage]}
+                      </p>
                     </div>
                   </div>
                 </CarouselItem>
@@ -93,3 +63,5 @@ export const Teachers = ({ className }: Props) => {
     </div>
   );
 };
+
+

@@ -16,6 +16,9 @@ body {
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 @layer base {
   :root {
@@ -138,4 +141,17 @@ body {
     left: 0;
     width: 100%;
   }
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.custom-hyphens {
+  hyphens: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }

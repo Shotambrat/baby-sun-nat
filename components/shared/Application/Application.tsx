@@ -3,9 +3,16 @@ import { useState, ChangeEvent } from "react";
 import React from "react";
 import { cn } from "@lib/utils";
 import TextField from "@mui/material/TextField";
-import { Select, MenuItem, FormControl, InputLabel, SelectChangeEvent } from "@mui/material";
+import {
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  SelectChangeEvent,
+} from "@mui/material";
 import { Button } from "@/components/ui";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 interface Props {
   className?: string;
@@ -18,24 +25,81 @@ interface FormState {
 }
 
 export const Application = ({ className }: Props) => {
+  const t = useTranslations("Application");
+
   const [form, setForm] = useState<FormState>({
     fullname: "",
     number: "",
     service: "",
   });
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, name: keyof FormState) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    name: keyof FormState
+  ) => {
     setForm((prevState) => ({
       ...prevState,
       [name]: e.target.value,
     }));
   };
 
-  const handleSelectChange = (e: SelectChangeEvent<string>, name: keyof FormState) => {
+  const handleSelectChange = (
+    e: SelectChangeEvent<string>,
+    name: keyof FormState
+  ) => {
     setForm((prevState) => ({
       ...prevState,
       [name]: e.target.value,
     }));
+  };
+
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+
+    const API_URL = "https://baby-sun.uz/api/application";
+    const API_KEY = "aFE~&#siAhCs9_Ni]AoC)HMF#y0V)!-kIh0h-3.eR0_W.gA~gk";
+
+    // Логирование запроса перед отправкой
+    console.log("Отправка запроса:", {
+      url: API_URL,
+      headers: {
+        "API-Key": API_KEY,
+      },
+      body: form,
+    });
+
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "API-Key": API_KEY,
+        },
+        body: JSON.stringify(form),
+      });
+
+      // Логирование ответа
+      console.log("Ответ сервера:", response);
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Успех:", result);
+        alert(t("successMessage"));
+      } else if (response.status === 401 || response.status === 403) {
+        console.error("Ошибка авторизации: API-ключ отсутствует или недействителен.");
+        alert(t("authErrorMessage"));
+      } else {
+        console.error("Ошибка:", response.statusText);
+        alert(t("submitErrorMessage"));
+      }
+    } catch (error) {
+      console.error("Ошибка сети:", error);
+      alert(t("networkErrorMessage"));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -47,74 +111,89 @@ export const Application = ({ className }: Props) => {
               src={"/images/application/application-icon.png"}
               width={1000}
               height={1000}
-              alt="Application Icon on Background"
+              alt={t("applicationIconAlt")}
               className="max-h-[200px] max-w-[200px] h-full w-full"
             />
           </div>
           <div className="flex-1 space-y-4">
             <h3 className="text-4xl font-semibold leading-12 w-full max-w-[300px]">
-              Записаться <br /> на прием
+              {t("titleLine1")} <br /> {t("titleLine2")}
             </h3>
             <p className="w-full max-w-[300px] max-mdx:text-lg">
-              Мы предлагаем комфортные условия и современный подход к лечению
+              {t("description")}
             </p>
           </div>
           <div className="flex-1">
             <div className="w-full space-y-8 lgx:max-w-[500px]">
               <TextField
-                label="ФИО"
+                label={t("fullnameLabel")}
                 value={form.fullname}
                 onChange={(e) => handleInputChange(e, "fullname")}
                 variant="standard"
                 fullWidth
                 sx={{
                   input: { color: "white" },
-                  "& .MuiInput-underline:before": { borderBottomColor: "white" }, // Белая нижняя линия
-                  "& .MuiInput-underline:hover:not(.Mui-disabled):before": { borderBottomColor: "white" }, // Белая линия при наведении
-                  "& .MuiInput-underline:after": { borderBottomColor: "gold" }, // Золотая линия при фокусе
+                  "& .MuiInput-underline:before": { borderBottomColor: "white" },
+                  "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
+                    borderBottomColor: "white",
+                  },
+                  "& .MuiInput-underline:after": { borderBottomColor: "gold" },
                 }}
                 InputLabelProps={{
-                  style: { color: "white" }, // Цвет label
+                  style: { color: "white" },
                 }}
               />
               <TextField
-                label="Номер телефона"
+                label={t("phoneLabel")}
                 value={form.number}
                 onChange={(e) => handleInputChange(e, "number")}
                 variant="standard"
                 fullWidth
                 sx={{
                   input: { color: "white" },
-                  "& .MuiInput-underline:before": { borderBottomColor: "white" }, // Белая нижняя линия
-                  "& .MuiInput-underline:hover:not(.Mui-disabled):before": { borderBottomColor: "white" }, // Белая линия при наведении
-                  "& .MuiInput-underline:after": { borderBottomColor: "gold" }, // Золотая линия при фокусе
+                  "& .MuiInput-underline:before": { borderBottomColor: "white" },
+                  "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
+                    borderBottomColor: "white",
+                  },
+                  "& .MuiInput-underline:after": { borderBottomColor: "gold" },
                 }}
                 InputLabelProps={{
-                  style: { color: "white" }, // Цвет label
+                  style: { color: "white" },
                 }}
               />
-              <FormControl fullWidth variant="standard" sx={{ mb: 3, color: "white" }}>
-                <InputLabel sx={{ color: "white" }}>Выберите услугу</InputLabel>
+              <FormControl
+                fullWidth
+                variant="standard"
+                sx={{ mb: 3, color: "white" }}
+              >
+                <InputLabel sx={{ color: "white" }}>{t("selectServiceLabel")}</InputLabel>
                 <Select
                   value={form.service}
                   onChange={(e) => handleSelectChange(e, "service")}
                   sx={{
                     color: "white",
-                    "& .MuiSelect-icon": { color: "white" }, // Белая иконка стрелки
-                    "& .MuiInput-underline:before": { borderBottomColor: "white" }, // Белая нижняя линия
-                    "& .MuiInput-underline:hover:not(.Mui-disabled):before": { borderBottomColor: "white" }, // Белая линия при наведении
-                    "&:hover:not(.Mui-disabled):before": { borderBottomColor: "white" }, // Белая линия при наведении (без фокуса)
-                    "&:before": { borderBottomColor: "white" }, // Белая линия до фокуса
-                    "&:after": { borderBottomColor: "gold" }, // Золотая линия при фокусе
+                    "& .MuiSelect-icon": { color: "white" },
+                    "& .MuiInput-underline:before": {
+                      borderBottomColor: "white",
+                    },
+                    "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
+                      borderBottomColor: "white",
+                    },
+                    "&:before": { borderBottomColor: "white" },
+                    "&:after": { borderBottomColor: "gold" },
                   }}
                 >
-                  <MenuItem value="consultation">Консультация</MenuItem>
-                  <MenuItem value="treatment">Лечение</MenuItem>
-                  <MenuItem value="diagnostics">Диагностика</MenuItem>
+                  <MenuItem value="consultation">{t("services.consultation")}</MenuItem>
+                  <MenuItem value="treatment">{t("services.treatment")}</MenuItem>
+                  <MenuItem value="diagnostics">{t("services.diagnostics")}</MenuItem>
                 </Select>
               </FormControl>
-              <Button className="bg-white text-[#009FE3] max-lgx:w-full text-xl font-semibold py-3 hover:bg-white px-16 rounded-full">
-                Отправить
+              <Button
+                onClick={handleSubmit}
+                disabled={isSubmitting}
+                className="bg-white text-[#009FE3] max-lgx:w-full text-xl font-semibold py-3 hover:bg-white px-16 rounded-full"
+              >
+                {isSubmitting ? t("sending") : t("submitButton")}
               </Button>
             </div>
           </div>

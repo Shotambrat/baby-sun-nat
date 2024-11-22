@@ -61,7 +61,7 @@ export const Response = ({ status, onClose, className }: Props) => {
             onClick={onClose}
             className="text-lg rounded-full px-24 py-3 max-mdx:py-5"
           >
-            {t("ok")} {/* Текст кнопки */}
+            {t("ok")} 
           </Button>
         </DialogContent>
       </Dialog>

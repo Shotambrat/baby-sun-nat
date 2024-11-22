@@ -4,10 +4,11 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight, Menu, ChevronDown } from "lucide-react";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { cn } from "@/lib/utils";
-import { Request } from "../../Request/Request";
+import { RequestAppointment } from "../../Request/RequestAppointment";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
 import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 interface Props {
   className?: string;
@@ -16,32 +17,33 @@ interface Props {
 export const Tools = ({ className }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+  const t = useTranslations("Headers.Navigation");
 
   const navigationItems = [
     {
-      title: "Услуги",
+      title: t("Services"),
       href: "/services",
       data: [
-        { title: "Хирургия", href: "/services/surgery" },
-        { title: "Ортопедия", href: "/services/orthopedics" },
-        { title: "СПА для женщин", href: "/services/women-spa" },
-        { title: "Косметология", href: "/services/cosmetology" },
-        { title: "Детский массаж", href: "/services/child-massage" },
+        { title: t("Subservices.Surgery"), href: "/services/surgery" },
+        { title: t("Subservices.Orthopedics"), href: "/services/orthopedics" },
+        { title: t("Subservices.WomenSpa"), href: "/services/women-spa" },
+        { title: t("Subservices.Cosmetology"), href: "/services/cosmetology" },
+        { title: t("Subservices.ChildMassage"), href: "/services/child-massage" },
       ],
     },
     {
-      title: "Курсы",
+      title: t("Courses"),
       href: "/courses",
       data: [
-        { title: "ШРОТ-терапия", href: "/courses/shrot-therapy" },
-        { title: "Hijama & zuluk", href: "/courses/hijoma-and-zuluk" },
-        { title: "Медсестра", href: "/courses/nursery" },
-        { title: "Косметология", href: "/courses/cosmetology" },
+        { title: t("Subcourses.ShrotTherapy"), href: "/courses/shrot-therapy" },
+        { title: t("Subcourses.HijomaAndZuluk"), href: "/courses/hijoma-and-zuluk" },
+        { title: t("Subcourses.Nursery"), href: "/courses/nursery" },
+        { title: t("Subcourses.Cosmetology"), href: "/courses/cosmetology" },
       ],
     },
-    { title: "О нас", href: "/about" },
-    { title: "Отзывы", href: "/reviews" },
-    { title: "Контакты", href: "/contacts" },
+    { title: t("About"), href: "/about" },
+    { title: t("Reviews"), href: "/reviews" },
+    { title: t("Contacts"), href: "/contacts" },
   ];
 
   const handleAccordionToggle = (title: string) => {
@@ -52,7 +54,7 @@ export const Tools = ({ className }: Props) => {
     <div className={cn("flex items-center", className)}>
       <div className="flex max-xl:flex gap-4 items-center">
         <LanguageSwitcher />
-        <Request className="max-mdx:hidden" />
+        <RequestAppointment className="max-mdx:hidden" />
       </div>
 
       {/* Burger Menu Icon */}
@@ -137,11 +139,9 @@ export const Tools = ({ className }: Props) => {
             </div>
           ))}
         </nav>
-
-        {/* Request Component */}
         <div className="p-4 w-full flex justify-between z-10">
           <div className="w-full" onClick={() => setIsOpen(false)}>
-            <Request className="z-[9999] w-full" />
+            <RequestAppointment className="z-[9999] w-full" />
           </div>
         </div>
       </Drawer>

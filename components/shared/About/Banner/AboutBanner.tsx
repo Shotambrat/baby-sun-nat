@@ -2,14 +2,14 @@ import React from "react";
 import { cn } from "@lib/utils";
 import Image from "next/image";
 import { Button } from "@/components/ui";
-import { useTranslations } from "next-intl"; // Подключаем локализацию
+import { useTranslations } from "next-intl"; 
 
 interface Props {
   className?: string;
 }
 
 export const AboutBanner = ({ className }: Props) => {
-  const t = useTranslations("BabySun"); // Подключаемся к разделу "BabySun" в локализации
+  const t = useTranslations("BabySun"); 
 
   return (
     <div

@@ -1,14 +1,32 @@
 {
   "Headers": {
     "Navigation": {
-      "course": "Kurs",
-      "teachers": "Muallim",
-      "reviews": "Izohlar",
-      "education": "Ta'lim",
-      "gallery": "Galereya"
+      "Services": "Xizmatlar",
+      "Courses": "Kurslar",
+      "About": "Biz haqimizda",
+      "Reviews": "Sharhlar",
+      "Contacts": "Kontaktlar",
+      "Subservices": {
+        "Surgery": "Jarrohlik",
+        "Orthopedics": "Ortopediya",
+        "WomenSpa": "Ayollar uchun SPA",
+        "Cosmetology": "Kosmetologiya",
+        "ChildMassage": "Bolalar massaji"
+      },
+      "Subcourses": {
+        "ShrotTherapy": "SHROT terapiya",
+        "HijomaAndZuluk": "Hijama & zuluk",
+        "Nursery": "Hamshiralik",
+        "Cosmetology": "Kosmetologiya"
+      },
+      "RequestAppointment": "Qabulga yozilish",
+      "Close": "Yopish"
     }
   },
   "Main": {
+    "Teachers": {
+      "teachers": "O'qituvchilar"
+    },
     "Banner": {
       "title": "SHROT-terapiyasi bo'yicha ",
       "subtitle": "mutaxassis bo'ling",
@@ -111,12 +129,14 @@
     "Form": {
       "title": "Kursimiz ishtirokchisi bo'lish uchun anketani to'ldiring",
       "titleModal": "Kursga yozilish",
+      "titleModalAppointment": "Uchrashuv belgilang",
       "fields": {
         "name": "Isim",
         "education": "Tibbiy ta'lim",
-        "phone": "Aloqa telefon raqami"
+        "phone": "Aloqa telefon raqami",
+        "service": "Xizmatni kiriting"
       },
-      "submitButton": "So'rov yuborish",
+      "submitButton": "Yuborish",
       "loading": "Iltimos, kuting"
     },
     "Modal": {
@@ -208,7 +228,352 @@
       "subtitle": "2017-yilda tashkil etilgan",
       "description": "BabySun klinikasi [tashkil etilgan yil] yilda bolalar uchun ixtisoslashtirilgan tibbiyot muassasasini yaratish maqsadida tashkil etilgan. Shu yili klinikaning birinchi markazi ochilib, bolalar kasalliklarini davolash va oldini olish xizmatlarini taklif qila boshladi.",
       "licenses": "Litsenziyalar"
+    },
+    "licenses": "Sertifikatlar va litsenziyalar"
+  },
+  "request": "Yozilish",
+  "Contacts": {
+    "title": "Kontaktlar",
+    "address": "Manzil",
+    "telephone": "Telefon",
+    "graphik": "Ish vaqti",
+    "address_info": "Eshonguzar shaharchasi, Markaziy Shifoxona ko'chasi, 29",
+    "graphik_1": "Dush-Ju: 8:00 - 17:00",
+    "graphik_2": "Sh: 8:00 - 15:00",
+    "rules": "2024 © BabySun. Barcha huquqlar himoyalangan",
+    "politics": "Maxfiylik siyosati",
+    "users accept": "Foydalanuvchi shartnomasi",
+    "connection": "Ulanish"
+  },
+  "Application": {
+    "titleLine1": "Qabulga",
+    "titleLine2": "yozilish",
+    "description": "Biz qulay sharoitlar va zamonaviy davolash yondashuvini taklif etamiz",
+    "fullnameLabel": "F.I.O",
+    "phoneLabel": "Telefon raqami",
+    "selectServiceLabel": "Xizmatni tanlang",
+    "services": {
+      "consultation": "Konsultatsiya",
+      "treatment": "Davolash",
+      "diagnostics": "Diagnostika"
+    },
+    "submitButton": "Yuborish",
+    "sending": "Yuborilmoqda...",
+    "successMessage": "Ma'lumotlar muvaffaqiyatli yuborildi!",
+    "authErrorMessage": "Avtorizatsiya xatosi! API kalitini tekshiring.",
+    "submitErrorMessage": "Ma'lumotlarni yuborishda xato yuz berdi!",
+    "networkErrorMessage": "Tarmoq xatosi! Ulanishni tekshiring.",
+    "applicationIconAlt": "Fon ustidagi ariza ikonkasi"
+  },
+  "Banner": {
+    "banner1": {
+      "title": "BabySun'ga xush kelibsiz",
+      "description": "Bolalar va kattalarning sog'lig'i va reabilitatsiyasida ishonchli hamkoringiz. Yuqori aniqlikdagi operatsiyalar, professional kurslar va farovonligingiz uchun zamonaviy xizmatlar",
+      "buttonName": "Batafsil"
+    },
+    "banner2": {
+      "title": "Tibbiyot mutaxassislari uchun professional kurslar",
+      "description": "Zamonaviy usullarni o'rganish: SHROT-terapiya, Hijama & zuluk, hamshiralarga va kosmetologiyaga kurslar. Malakangizni oshiring va ko'nikmalaringizni yaxshilang",
+      "buttonName": "Kurslar haqida ko'proq ma'lumot olish"
+    },
+    "banner3": {
+      "title": "Zamonaviy tibbiy xizmatlar",
+      "description": "Jarrohlik va ortopediya dan ayollar uchun SPA va bolalar massajigacha. Sog'lig'ingiz uchun professional parvarish va ilg'or metodlar",
+      "buttonName": "Xizmatga yozilish"
+    },
+    "bannerAlt": "Banner ikonkasi {{id}}"
+  },
+  "About_Comp": {
+    "title": "Klinikamiz haqida",
+    "aboutText": "BabySun klinikasi bolalar sog'lig'i bo'yicha ixtisoslashgan yetakchi tibbiy muassasadir. Biz kasalliklarni diagnostikasi va profilaktikasidan tortib murakkab jarrohlik aralashuvlariga qadar keng tibbiy xizmatlar ko'rsatamiz. Maqsadimiz — har bir bolaga zamonaviy metodika va ishonchli tibbiyotga asoslangan sifatli tibbiy xizmat ko'rsatishdir.\nKlinika o'zining tajribali shifokorlar va hamshiralardan iborat professional jamoasidan faxrlanadi. Biz bilimlarimizni doimiy ravishda takomillashtirib, kichik bemorlarimiz sog'lig'ini yaxshilash uchun innovatsion yondashuvlarni joriy qilmoqdamiz.\nJamoamiz har bir bola va uning oilasiga individual yondashuvning ahamiyatini tushunadi, shuning uchun biz davolash va reabilitatsiya uchun qulay sharoitlar yaratar, bolalar tezroq tiklanishlariga va o'zlarini ishonchli his qilishlariga yordam beramiz.",
+    "more": "Batafsil"
+  },
+  "Services": {
+    "ourServices": "Bizning xizmatlarimiz",
+    "goTo": "O‘tish",
+    "arrowAlt": "Linkga o‘tirish uchun o‘ngga yo‘naltirilgan o‘q",
+    "serviceCardAlt": "{service} xizmat kartasi",
+    "services": {
+      "surgery": "Jarrohlik",
+      "orthopedics": "Ortopediya",
+      "womenSpa": "Ayollar uchun SPA",
+      "cosmetology": "Kosmetologiya",
+      "childMassage": "Bolalar massaji"
     }
   },
-  "request": "Yozilish"
+  "Advantages": {
+    "title": "Klinikaning afzalliklari",
+    "modernEquipment": {
+      "title": "Zamonaviy uskunalar",
+      "description": "Klinika ilg‘or tibbiy texnika bilan jihozlangan bo‘lib, diagnostikada yuqori aniqlikdagi natijalarni ta’minlaydi.",
+      "alt": "Zamonaviy uskunalar"
+    },
+    "individualApproach": {
+      "title": "Individual yondashuv",
+      "description": "Har bir bemorga uning xususiyatlari va ehtiyojlarini hisobga olgan holda maksimal e’tibor qaratiladi.",
+      "alt": "Individual yondashuv"
+    },
+    "experiencedSpecialists": {
+      "title": "Tajriba bilan mutaxassislar",
+      "description": "Bizning shifokorlarimiz o‘z sohalarida tan olingan ekspertlar bo‘lib, muntazam ravishda malakasini oshirib boradilar.",
+      "alt": "Tajriba bilan mutaxassislar"
+    },
+    "comfortableConditions": {
+      "title": "Qulay sharoitlar",
+      "description": "Biz bolalar doktor ko‘rinishidan qo‘rqmasligi uchun qulay va do‘stona muhit yaratdik.",
+      "alt": "Qulay sharoitlar"
+    }
+  },
+  "Reviews": {
+    "title": "Bemorlarning sharhlari",
+    "all_reviews": "Barcha sharhlar",
+    "collapse": "Yopish",
+    "showAll": "Hammasini ko'rsatish"
+  },
+  "ReviewsFilter": {
+    "title": "Bizning o‘quv kurslarimizni tamomlaganlarning fikrlari",
+    "categories": {
+      "all": "Barcha fikrlar",
+      "rubdown": "Massaj kursi",
+      "cosmetology": "Kosmetologiya kursi",
+      "other": "Boshqa"
+    },
+    "buttons": {
+      "showAll": "Hammasini ko‘rish",
+      "hide": "Yashirish"
+    }
+  },
+  "Mission": {
+    "title": "Missiya va Qadriyatlar",
+    "sections": {
+      "care": {
+        "title": "Bolalarga G'amxo'rlik",
+        "description": "Biz har bir bolaning hayot sifatini yaxshilashga intilamiz, ilg'or davolash usullarini taqdim etamiz",
+        "alt": "Missiya 1 rasmi"
+      },
+      "safety": {
+        "title": "Xavfsizlik va Ishonch",
+        "description": "Biz xavfsiz sharoitlar yaratamiz va bemorlar hamda ularning oilalari bilan ishonchli munosabatlarni qo'llab-quvvatlaymiz",
+        "alt": "Missiya 2 rasmi"
+      }
+    }
+  },
+  "AboutDoctors": {
+    "title": "Bizning shifokorlarimiz",
+    "kuchimov": {
+      "fullname": "Kuchimov Quvondiq Pirnazarovich",
+      "speciality": [
+        "Xirurgiya"
+      ]
+    },
+    "abdullayeva": {
+      "fullname": "Abdullayeva Nargiza Shukrullayevna",
+      "speciality": [
+        "Kosmetologiya",
+        "Massaj"
+      ]
+    },
+    "muminova": {
+      "fullname": "Muminova Madina Mumin qizi",
+      "speciality": [
+        "Xirurg",
+        "Ortoped"
+      ]
+    },
+    "sagdullayeva": {
+      "fullname": "Sagdullayeva Nilufar Shukrullayevna",
+      "speciality": [
+        "Reabilitolog"
+      ]
+    },
+    "talipova": {
+      "fullname": "Talipova Feruza Xojimuratovna",
+      "speciality": [
+        "Operatsion hamshira"
+      ]
+    },
+    "ziganshina": {
+      "fullname": "Ziganshina Layli Sharofitdinovna",
+      "speciality": [
+        "Operatsion hamshira"
+      ]
+    },
+    "karimova": {
+      "fullname": "Karimova Nafisa Sadullayevna",
+      "speciality": [
+        "Bemorlarga g'amxo'rlik qilish kurslari kuratori"
+      ]
+    },
+    "ismoilova": {
+      "fullname": "Zarifa Ismoilova Abduvohid qizi",
+      "speciality": [
+        "Massaj"
+      ]
+    },
+    "azizov": {
+      "fullname": "Azizov Abduhalil Abduqodirovich",
+      "speciality": [
+        ""
+      ]
+    }
+  },
+  "DoctorPage": {
+    "back": "Orqaga",
+    "schedule": "Ish jadvali",
+    "makeAppointment": "Qabulga yozilish",
+    "doctorNotFound": "Shifokor topilmadi",
+    "kuchimov": {
+      "fullname": "Kuchimov Quvondiq Pirnazarovich",
+      "info": "Bolalar va kattalar jarrohligi bo'yicha ixtisoslashgan, shu jumladan tirnoq olib tashlash, abstsessni ochish va boshqalar.",
+      "graphic": [
+        "14:00 - 18:00 dushanba-juma",
+        "14:00 - 18:00 shanba"
+      ],
+      "speciality": [
+        "Jarroh"
+      ]
+    },
+    "muminova": {
+      "fullname": "Muminova Madina Mumin qizi",
+      "info": "Bolalarda tayanch-harakat tizimi kasalliklarini diagnostika va davolash bo'yicha ixtisoslashgan",
+      "graphic": [
+        "8:00 - 17:00 dushanba-juma",
+        "8:00 - 15:00 shanba"
+      ],
+      "speciality": [
+        "Ortoped"
+      ]
+    },
+    "abdullayeva": {
+      "fullname": "Abdullayeva Nargiza Shukrullayevna",
+      "info": "Turli xil kosmetologik protseduralar va massajlarni o'tkazish bo'yicha ixtisoslashgan",
+      "graphic": [
+        "9:00 - 18:00 dushanba-juma",
+        "dam olish kuni shanba-yakshanba"
+      ],
+      "speciality": [
+        "Kosmetologiya",
+        "Massaj"
+      ]
+    },
+    "sagdullayeva": {
+      "fullname": "Sagdullayeva Nilufar Shukrullayevna",
+      "info": "Travma va operatsiyalardan keyin bemorlarni reabilitatsiya qilish, harakat funktsiyasini tiklash bo'yicha ixtisoslashgan",
+      "graphic": [
+        "8:00 - 19:00 dushanba-shanba"
+      ],
+      "speciality": [
+        "Reabilitolog"
+      ]
+    },
+    "talipova": {
+      "fullname": "Talipova Feruza Xojimuratovna",
+      "info": "Operatsiyalar paytida assistentlik qiladi, sterilizatsiya va asbob-uskunalarni tayyorlashni ta'minlaydi",
+      "graphic": [
+        "08:00 - 14:00 dushanba-shanba"
+      ],
+      "speciality": [
+        "Operatsion hamshira"
+      ]
+    },
+    "ziganshina": {
+      "fullname": "Ziganshina Layli Sharofitdinovna",
+      "info": "Jarrohga operatsiya xonasida yordam beradi, sterilizatsiya va operatsion maydonni tayyorlash uchun javobgardir",
+      "graphic": [
+        "14:00 - 19:00 dushanba-shanba"
+      ],
+      "speciality": [
+        "Operatsion hamshira"
+      ]
+    },
+    "karimova": {
+      "fullname": "Karimova Nafisa Sadullayevna",
+      "info": "Talabalarga bemorlarga g'amxo'rlik qilish asoslarini, shu jumladan birinchi yordam ko'rsatish va in'ektsiyalarni o'rgatadi",
+      "graphic": [
+        "10:00 - 17:00 dushanba-shanba"
+      ],
+      "speciality": [
+        "Bemorlarga g'amxo'rlik qilish kurslari kuratori"
+      ]
+    },
+    "ismoilova": {
+      "fullname": "Zarifa Ismoilova Abduvohid qizi",
+      "info": "Ayollar va bolalar uchun barcha turdagi massajlar.",
+      "graphic": [
+        "10:00 - 17:00 dushanba-shanba"
+      ],
+      "speciality": [
+        "Massaj"
+      ]
+    },
+    "azizov": {
+      "fullname": "Azizov Abduhalil Abduqodirovich",
+      "info": "Bolalarda tayanch-harakat tizimi kasalliklarini diagnostika va davolash bo'yicha ixtisoslashgan",
+      "graphic": [
+        "10:00 - 17:00 dushanba-shanba"
+      ],
+      "speciality": [
+        "Ortoped"
+      ]
+    }
+  },
+  "AboutDoctors": {
+    "title": "Bizning shifokorlarimiz",
+    "kuchimov": {
+      "fullname": "Kuchimov Quvondiq Pirnazarovich",
+      "speciality": [
+        "Xirurgiya"
+      ]
+    },
+    "abdullayeva": {
+      "fullname": "Abdullayeva Nargiza Shukrullayevna",
+      "speciality": [
+        "Kosmetologiya",
+        "Massaj"
+      ]
+    },
+    "muminova": {
+      "fullname": "Muminova Madina Mumin qizi",
+      "speciality": [
+        "Xirurg",
+        "Ortoped"
+      ]
+    },
+    "sagdullayeva": {
+      "fullname": "Sagdullayeva Nilufar Shukrullayevna",
+      "speciality": [
+        "Reabilitolog"
+      ]
+    },
+    "talipova": {
+      "fullname": "Talipova Feruza Xojimuratovna",
+      "speciality": [
+        "Operatsion hamshira"
+      ]
+    },
+    "ziganshina": {
+      "fullname": "Ziganshina Layli Sharofitdinovna",
+      "speciality": [
+        "Operatsion hamshira"
+      ]
+    },
+    "karimova": {
+      "fullname": "Karimova Nafisa Sadullayevna",
+      "speciality": [
+        "Bemorlarga g'amxo'rlik qilish kurslari kuratori"
+      ]
+    },
+    "ismoilova": {
+      "fullname": "Zarifa Ismoilova Abduvohid qizi",
+      "speciality": [
+        "Massaj"
+      ]
+    },
+    "azizov": {
+      "fullname": "Azizov Abduhalil Abduqodirovich",
+      "speciality": [
+        "Ortoped"
+      ]
+    }
+  }
 }

@@ -21,31 +21,37 @@ interface Props {
 }
 
 export const Request = ({ className, title = "Записаться" }: Props) => {
-  const t = useTranslations("")
+  const t = useTranslations("");
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [responseStatus, setResponseStatus] = useState<
-    "success" | "error" | null
-  >(null);
-  const [formData, setFormData] = useState({ name: "", phone: "", edu: "" });
+  const [responseStatus, setResponseStatus] = useState<"success" | "error" | null>(null);
 
+  // Данные формы
+  const [formData, setFormData] = useState({
+    fullname: "", // Имя пользователя
+    number: "",   // Номер телефона
+    service: "",  // Тип услуги
+  });
+
+  // Изменение значений в полях
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Отправка данных
   const handleSubmit = async () => {
-    setIsLoading(true);
+    setIsLoading(true); // Включить лоадер
     try {
       const response = await axios.post(
         "https://baby-sun.uz/api/application",
         formData,
         {
           headers: {
-            "API-Key": "aFE~&#siAhCs9_Ni]AoC)HMF#y0V)!-kIh0h-3.eR0_W.gA~gk", // Place your actual API Key here
+            "API-Key": "aFE~&#siAhCs9_Ni]AoC)HMF#y0V)!-kIh0h-3.eR0_W.gA~gk", // Укажите API ключ
           },
         }
-      ); // Замените на свой API путь
+      );
       if (response.status === 200) {
         setResponseStatus("success");
         setIsOpen(false);
@@ -54,30 +60,29 @@ export const Request = ({ className, title = "Записаться" }: Props) =>
       }
     } catch (err) {
       setResponseStatus("error");
-      console.log(err);
+      console.error(err);
     } finally {
-      setIsLoading(false); // Остановить лоадер
+      setIsLoading(false); // Выключить лоадер
     }
   };
 
   return (
     <div>
-      {/* Кнопка "Записаться", открывающая модальное окно */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>
           <Button
             className={cn(
-              "rounded-full lgx:px-12 py-3 font-semibold",
+              "rounded-full lg:px-12 py-3 font-semibold",
               className
             )}
           >
-            {title == "Записаться"? t('request') : title}
+            {title === "Записаться" ? t("request") : title}
           </Button>
         </DialogTrigger>
 
-        <DialogContent className="max-mdx:max-w-[360px] msx-w-[430px] px-6 py-6 max-mdx:px-4 bg-white shadow-lg rounded-lg">
+        <DialogContent className="max-w-[430px] px-6 py-6 bg-white shadow-lg rounded-lg">
           <DialogHeader>
-            <DialogTitle className="max-mdx:text-2xl text-3xl font-bold">
+            <DialogTitle className="text-3xl font-bold">
               {t("Main.Form.titleModal")}
             </DialogTitle>
             <button
@@ -91,39 +96,37 @@ export const Request = ({ className, title = "Записаться" }: Props) =>
 
           <div className="space-y-4 mt-4">
             <Input
-              name="name"
+              name="fullname"
               placeholder={t("Main.Form.fields.name")}
-              className="py-6 px-3 bg-[#F8F8F8] text-black font-semibold text-lg rounded-2xl"
+              className="py-6 px-3 bg-gray-100 text-black font-semibold text-lg rounded-2xl"
               onChange={handleInputChange}
-              value={formData.name}
+              value={formData.fullname}
             />
             <Input
-              name="phone"
+              name="number"
               placeholder={t("Main.Form.fields.phone")}
-              className="py-6 px-3 bg-[#F8F8F8] text-black font-semibold text-lg rounded-md"
+              className="py-6 px-3 bg-gray-100 text-black font-semibold text-lg rounded-2xl"
               onChange={handleInputChange}
-              value={formData.phone}
+              value={formData.number}
             />
             <Input
-              name="edu"
-              placeholder={t("Main.Form.fields.education")}
-              className="py-6 px-3 bg-[#F8F8F8] text-black font-semibold text-lg rounded-md"
+              name="service"
+              placeholder={t("Main.Form.fields.service")}
+              className="py-6 px-3 bg-gray-100 text-black font-semibold text-lg rounded-2xl"
               onChange={handleInputChange}
-              value={formData.edu}
+              value={formData.service}
             />
           </div>
 
-          {/* Лоадер и кнопка отправки */}
           <div className="mt-4">
             <Button
-              className="rounded-full max-mdx:w-full px-8 py-4 text-lg bg-blue-500 hover:bg-blue-600 text-white font-semibold"
+              className="rounded-full w-full px-8 py-4 text-lg bg-blue-500 hover:bg-blue-600 text-white font-semibold"
               onClick={handleSubmit}
               disabled={isLoading}
             >
               {isLoading ? (
                 <div className="flex items-center space-x-2">
-                  <Loader2 className="animate-spin" size={25} />{" "}
-                  {/* Иконка с анимацией вращения */}
+                  <Loader2 className="animate-spin" size={25} />
                   <span>{t("Main.Form.loading")}</span>
                 </div>
               ) : `${t("Main.Form.submitButton")}`}
@@ -132,7 +135,6 @@ export const Request = ({ className, title = "Записаться" }: Props) =>
         </DialogContent>
       </Dialog>
 
-      {/* Модальное окно успешного ответа или ошибки */}
       {responseStatus && (
         <Response
           status={responseStatus}

@@ -1,10 +1,11 @@
-"use client";
+"use client"; // Убедитесь, что это клиентский компонент
+
 import React from "react";
 import { cn } from "@lib/utils";
-import { PhotoProvider, PhotoView } from 'react-photo-view'; // Import react-photo-view
-import 'react-photo-view/dist/react-photo-view.css'; // Import react-photo-view styles
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui"; // Assuming you're using the shadcn carousel
-
+import { PhotoProvider, PhotoView } from 'react-photo-view'; // Импортируем react-photo-view
+import 'react-photo-view/dist/react-photo-view.css'; // Импортируем стили react-photo-view
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui";
+import { useTranslations } from "next-intl";
 interface Props {
   className?: string;
 }
@@ -12,37 +13,31 @@ interface Props {
 const licenses = [
   {
     id: 1,
-    image: "/images/about/licenses/licence.png", // Path to your image
+    image: "/images/about/licenses/1_1.jpg", // Путь к вашему изображению
   },
   {
     id: 2,
-    image: "/images/about/licenses/licence.png", // Same image repeated for demonstration
+    image: "/images/about/licenses/1_2.jpg", // То же изображение для демонстрации
   },
   {
     id: 3,
-    image: "/images/about/licenses/licence.png",
-  },
-  {
-    id: 4,
-    image: "/images/about/licenses/licence.png",
-  },
-  {
-    id: 5,
-    image: "/images/about/licenses/licence.png",
-  },
+    image: "/images/about/licenses/2.jpg",
+  }
 ];
 
 export const Licenses = ({ className }: Props) => {
+  const t = useTranslations("BabySun.history");
+
   return (
-    <div className={cn("py-24", className)}>
+    <div id="licenses" className={cn("py-24", className)}>
       <div className="w-full max-w-[1500px] px-4 mx-auto space-y-8">
-        <h2 className="text-4xl font-bold">Сертификаты и лицензии</h2>
+        <h2 className="text-4xl font-bold">{t('licenses')}</h2>
 
         <PhotoProvider>
           <Carousel className="space-y-12">
             <CarouselContent>
               {licenses.map((license, index) => (
-                <CarouselItem key={index} className="mdx:basis-1/2 lgx:basis-1/4">
+                <CarouselItem key={license.id} className="mdx:basis-1/2 lgx:basis-1/4">
                   <div className="p-2 h-auto rounded-2xl flex justify-center items-center">
                     <PhotoView src={license.image}>
                       <img
@@ -61,3 +56,4 @@ export const Licenses = ({ className }: Props) => {
     </div>
   );
 };
+

@@ -12,16 +12,31 @@ interface Props {
   className?: string;
 }
 
+const coursTeachers = [
+  {
+    id: 1,
+    name: {
+      ru: "Сагдуллаева Нилуфар Шукруллаевна",
+      en: "Sagdullayeva Nilufar Shukrullayevna",
+    },
+    description: {
+      ru: "Специализируется на реабилитации пациентов после травм и операций, восстановлении двигательной функции",
+      en: "Bemorlarni jarohat va operatsiyalardan keyin reabilitatsiya qilish va harakat funktsiyalarini tiklashga ixtisoslashgan",
+    },
+    image: "/images/about/doctors/sagdullaeva.jpg",
+  },
+];
+
 export const Courses = ({ className }: Props) => {
   return (
     <div className={cn(className)}>
-        <Banner />
-        <About />
-        <Modules />
-        <Teachers />
-        <Bonuses />
-        <Application />
-        <Map />
+      <Banner />
+      <About />
+      <Modules />
+      <Teachers teachers={coursTeachers} />
+      <Bonuses />
+      <Application />
+      <Map />
     </div>
   );
 };

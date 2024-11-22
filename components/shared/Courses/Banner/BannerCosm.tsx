@@ -23,9 +23,9 @@ export const BannerCosm = ({ className }: Props) => {
       </div>
 
       {/* Контейнер для изображения */}
-      <div className="absolute right-0 top-0 bottom-0 overflow-hidden h-full max-lgx:hidden w-[50%] flex justify-end items-center">
+      <div className="absolute right-0 top-0 bottom-0 overflow-hidden h-full max-lgx:hidden w-[43%] flex justify-end items-center">
         <Image
-          src={"/images/courses/banner/mobile.png"} // оставил изображение, чтобы потом можно было заменить
+          src={"/images/courses/banner/cosm.png"} // оставил изображение, чтобы потом можно было заменить
           alt="Courses Banner Photo"
           layout="intrinsic" // сохраняет пропорции
           width={2000}
@@ -35,7 +35,7 @@ export const BannerCosm = ({ className }: Props) => {
         />
       </div>
       <Image
-        src={"/images/courses/banner/mobile.png"}
+        src={"/images/courses/banner/cosm.png"}
         alt="Courses Banner Photo"
         layout="intrinsic" // сохраняет пропорции
         width={2000}

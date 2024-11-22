@@ -14,19 +14,19 @@ const items = [
       "Минимально инвазивные методы обеспечивают короткие сроки реабилитации",
   },
   {
-    icon: "/svg/services/benefits/2.svg",
+    icon: "/svg/services/benefits/4operac.svg",
     title: "Индивидуальный подход",
     description:
       "Каждая методика адаптируется под особенности конкретного пациента, что позволяет достичь максимального результата",
   },
   {
-    icon: "/svg/services/benefits/3.svg",
+    icon: "/svg/services/benefits/3operac.svg",
     title: "Минимальные риски",
     description:
       "Применение современных технологий гарантирует безопасность и эффективность каждой процедуры",
   },
   {
-    icon: "/svg/services/benefits/4.svg",
+    icon: "/svg/services/benefits/2operac.svg",
     title: "Высокая эффективность",
     description:
       "Новейшие методики дают возможность достигать превосходных результатов в сжатые сроки, улучшая качество жизни пациентов",
